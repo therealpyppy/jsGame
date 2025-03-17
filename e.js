@@ -1,8 +1,10 @@
-class key {
+import keyDictionary from "./keyDict.js"
+
+class Key {
     constructor() {
         this.type = "key";
         this.dataType = "key";
-        this.pressedKeys = {};
+        this.pressedKeys = keyDictionary;
         this.focused = true;
 
         document.addEventListener("keydown", (event) => {
@@ -43,54 +45,89 @@ class colorRGBA {
 }
 
 class Rect {
-	constructor(pX, pY, sW, sH, fillColor = new colorRGBA()) {
-		this.pX = pX;
-		this.pY = pY;
-		this.sW = sW;
-		this.sH = sH;
-		this.fillColor = fillColor;
-		this.type = "Rect";
-		this.dataType = "DrawableObject";
-	}
+    constructor(pX, pY, sW, sH, fillColor = new colorRGBA(), rotation = 0) {
+        this.pX = pX;
+        this.pY = pY;
+        this.sW = sW;
+        this.sH = sH;
+        this.fillColor = fillColor;
+        this.rotation = rotation;
+        this.type = "Rect";
+        this.dataType = "DrawableObject";
+    }
 }
 
 class Circle {
-	constructor(pX, pY, R, fillColor = new colorRGBA()) {
-		this.pX = pX;
-		this.pY = pY;
-		this.radius = R;
-		this.fillColor = fillColor;
-		this.type = "Circle";
-		this.dataType = "DrawableObject";
-	}
+    constructor(pX, pY, R, fillColor = new colorRGBA(), rotation = 0) {
+        this.pX = pX;
+        this.pY = pY;
+        this.radius = R;
+        this.fillColor = fillColor;
+        this.rotation = rotation;
+        this.type = "Circle";
+        this.dataType = "DrawableObject";
+    }
 }
 
-function Draw(object){
-	if (object.dataType == "DrawableObject") {
-		if (object.type == "Rect") {
-			let body = document.querySelector("body")
-			let drawn = document.createElement("div")
-			drawn.style.width = `${object.sW}px`
-			drawn.style.height = `${object.sH}px`
-			drawn.style.position = `absolute`
-			drawn.style.left = `${object.pX}px`
-			drawn.style.top = `${object.pY}px`
-			drawn.style.backgroundColor = `rgba(${object.fillColor.R}, ${object.fillColor.G}, ${object.fillColor.B}, ${object.fillColor.A})`
-			drawn.classList.add("object")
-			body.appendChild(drawn)
-		} else if (object.type == "Circle") {
-
-		}
-	}
+class Triangle {
+    constructor(pX, pY, base, height, fillColor = new colorRGBA(), rotation = 0) {
+        this.pX = pX;
+        this.pY = pY;
+        this.base = base;
+        this.height = height;
+        this.fillColor = fillColor;
+        this.rotation = rotation;
+        this.type = "Triangle";
+        this.dataType = "DrawableObject";
+    }
 }
 
-function Fill(fillColor = new colorRGBA()){
-	let body = document.querySelector("body")
-	let objects = document.getElementsByClassName("object")
-	for(let i = 0; i<objects.length; i++){
-		objects[i].remove()
-	}
-	body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`
+function Draw(object) {
+    if (object.dataType !== "DrawableObject") {
+        return;
+    }
+
+    const body = document.querySelector("body");
+    const drawn = document.createElement("div");
+    const { fillColor, pX, pY, rotation } = object;
+    const backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
+
+    if (object.type === "Rect") {
+        drawn.style.width = `${object.sW}px`;
+        drawn.style.height = `${object.sH}px`;
+        drawn.style.backgroundColor = backgroundColor;
+    } else if (object.type === "Circle") {
+        drawn.style.width = `${object.radius}px`;
+        drawn.style.height = `${object.radius}px`;
+        drawn.style.borderRadius = "50%";
+        drawn.style.backgroundColor = backgroundColor;
+    } else if (object.type === "Triangle") {
+        drawn.style.width = "0";
+        drawn.style.height = "0";
+        drawn.style.borderLeft = `${object.base / 2}px solid transparent`;
+        drawn.style.borderRight = `${object.base / 2}px solid transparent`;
+        drawn.style.borderBottom = `${object.height}px solid ${backgroundColor}`;
+    }
+
+    Object.assign(drawn.style, {
+        position: "absolute",
+        left: `${pX}px`,
+        top: `${pY}px`,
+        transform: `rotate(${rotation}deg)`,
+        transformOrigin: "center center"
+    });
+
+    drawn.classList.add("object");
+    body.appendChild(drawn);
 }
 
-export { colorRGBA, Rect, Circle, Draw, Fill};
+function Fill(fillColor = new colorRGBA()) {
+    let body = document.querySelector("body");
+
+    let objects = document.querySelectorAll(".object");
+    objects.forEach(obj => obj.remove());
+
+    body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
+}
+
+export { colorRGBA, Rect, Circle, Triangle, Key, Draw, Fill};
