@@ -1,9 +1,14 @@
 import keyDictionary from "./keyDict.js"
 
 class Vector2 {
-    constructor(x, y) {
+    constructor(x = 0, y = 0) {
         this.x = x;
         this.y = y;
+    }
+
+    addVector(x, y) {
+        this.x += x
+        this.y += y
     }
 }
 
@@ -52,9 +57,8 @@ class colorRGBA {
 }
 
 class Rect {
-    constructor(pX, pY, sW, sH, fillColor = new colorRGBA(), rotation = 0) {
-        this.pX = pX;
-        this.pY = pY;
+    constructor(position = new Vector2(), sW, sH, fillColor = new colorRGBA(), rotation = 0) {
+        this.position = position;
         this.sW = sW;
         this.sH = sH;
         this.fillColor = fillColor;
@@ -65,9 +69,8 @@ class Rect {
 }
 
 class Circle {
-    constructor(pX, pY, R, fillColor = new colorRGBA(), rotation = 0) {
-        this.pX = pX;
-        this.pY = pY;
+    constructor(position = new Vector2(), R, fillColor = new colorRGBA(), rotation = 0) {
+        this.position = position;
         this.radius = R;
         this.fillColor = fillColor;
         this.rotation = rotation;
@@ -77,9 +80,8 @@ class Circle {
 }
 
 class Triangle {
-    constructor(pX, pY, base, height, fillColor = new colorRGBA(), rotation = 0) {
-        this.pX = pX;
-        this.pY = pY;
+    constructor(position = new Vector2(), base, height, fillColor = new colorRGBA(), rotation = 0) {
+        this.position = position;
         this.base = base;
         this.height = height;
         this.fillColor = fillColor;
