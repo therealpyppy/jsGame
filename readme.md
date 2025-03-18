@@ -1,11 +1,6 @@
 # JSGame
 ## Essential just me remaking PyGame but in python
 
-# JavaScript Graphics and Input Library
-
-## Overview
-This library provides basic classes for handling vector math, input events, and rendering simple shapes (Rectangles, Circles, and Triangles) on a web page.
-
 ## Classes
 
 ### `Vector2`
