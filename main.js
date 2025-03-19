@@ -1,4 +1,4 @@
-import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2} from './e.js';
+import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2} from './scripts/e.js';
 
 let run = true
 let testRect = new Rect(new Vector2(300, 200), new Vector2(40, 40), new colorRGBA(255, 0, 0, 0), 0)
