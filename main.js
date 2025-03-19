@@ -1,26 +1,25 @@
-import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill} from './e.js';
+import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2} from './e.js';
 
 let run = true
-let testRect = new Rect(300, 200, 40, 40, new colorRGBA(255, 0, 0, 0))
-let testCircle = new Circle(350, 200, 40, new colorRGBA(255, 0, 0, 0))
-let testTriangle = new Triangle(400, 200, 40, 40, new colorRGBA(255, 0, 0, 0))
+let testRect = new Rect(new Vector2(300, 200), new Vector2(40, 40), new colorRGBA(255, 0, 0, 0), 0)
+let testCircle = new Circle(new Vector2(350, 200), 40, new colorRGBA(255, 0, 0, 0), 0)
+let testTriangle = new Triangle(new Vector2(400, 200), new Vector2(40, 40), new colorRGBA(255, 0, 0, 0), 0)
 let key = new Key
 
 function input(){
 	let keys = key.get_pressed()
 
-	// Rect
 	if (keys['s']) {
-		testRect.pY += 5
+		testRect.position.y += 5
 	}
 	if (keys['w']) {
-		testRect.pY -= 5
+		testRect.position.y -= 5
 	}
 	if (keys['d']) {
-		testRect.pX += 5
+		testRect.position.x += 5
 	}
 	if (keys['a']) {
-		testRect.pX -= 5
+		testRect.position.x -= 5
 	}
 	if (keys['q']) {
 		testRect.rotation -= 5
@@ -29,18 +28,17 @@ function input(){
 		testRect.rotation += 5
 	}
 
-	// Circle
 	if (keys['g']) {
-		testCircle.pY += 5
+		testCircle.position.y += 5
 	}
 	if (keys['t']) {
-		testCircle.pY -= 5
+		testCircle.position.y -= 5
 	}
 	if (keys['h']) {
-		testCircle.pX += 5
+		testCircle.position.x += 5
 	}
 	if (keys['f']) {
-		testCircle.pX -= 5
+		testCircle.position.x -= 5
 	}
 	if (keys['r']) {
 		testCircle.rotation -= 5
@@ -49,18 +47,17 @@ function input(){
 		testCircle.rotation += 5
 	}
 
-	// Triangle
 	if (keys['k']) {
-		testTriangle.pY += 5
+		testTriangle.position.y += 5
 	}
 	if (keys['i']) {
-		testTriangle.pY -= 5
+		testTriangle.position.y -= 5
 	}
 	if (keys['l']) {
-		testTriangle.pX += 5
+		testTriangle.position.x += 5
 	}
 	if (keys['j']) {
-		testTriangle.pX -= 5
+		testTriangle.position.x -= 5
 	}
 	if (keys['u']) {
 		testTriangle.rotation -= 5
@@ -91,3 +88,6 @@ if (run){
 
 
 Fill(new colorRGBA())
+Draw(testTriangle)
+Draw(testCircle)
+Draw(testRect)

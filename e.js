@@ -7,8 +7,8 @@ class Vector2 {
     }
 
     addVector(x, y) {
-        this.x += x
-        this.y += y
+        this.x += x;
+        this.y += y;
     }
 }
 
@@ -57,10 +57,9 @@ class colorRGBA {
 }
 
 class Rect {
-    constructor(position = new Vector2(), sW, sH, fillColor = new colorRGBA(), rotation = 0) {
+    constructor(position = new Vector2(), size = new Vector2(40, 40), fillColor = new colorRGBA(), rotation = 0) {
         this.position = position;
-        this.sW = sW;
-        this.sH = sH;
+        this.size = size
         this.fillColor = fillColor;
         this.rotation = rotation;
         this.type = "Rect";
@@ -80,14 +79,30 @@ class Circle {
 }
 
 class Triangle {
-    constructor(position = new Vector2(), base, height, fillColor = new colorRGBA(), rotation = 0) {
+    constructor(position = new Vector2(), size = new Vector2(40, 40), fillColor = new colorRGBA(), rotation = 0) {
         this.position = position;
-        this.base = base;
-        this.height = height;
+        this.size = size;
         this.fillColor = fillColor;
         this.rotation = rotation;
         this.type = "Triangle";
         this.dataType = "DrawableObject";
+    }
+
+    calculatePoints() {
+        const x1 = this.base / 2
+        const y1 = 0
+
+        const x2 = 0
+        const y2 = this.height
+
+        const x3 = this.base
+        const y3 = this.height 
+
+        return [
+            new Vector2(x1, y1),
+            new Vector2(x2, y2),
+            new Vector2(x3, y3)
+        ];
     }
 }
 
@@ -98,12 +113,12 @@ function Draw(object) {
 
     const body = document.querySelector("body");
     const drawn = document.createElement("div");
-    const { fillColor, pX, pY, rotation } = object;
+    const { fillColor, position, rotation } = object;
     const backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
 
     if (object.type === "Rect") {
-        drawn.style.width = `${object.sW}px`;
-        drawn.style.height = `${object.sH}px`;
+        drawn.style.width = `${object.size.x}px`;
+        drawn.style.height = `${object.size.y}px`;
         drawn.style.backgroundColor = backgroundColor;
     } else if (object.type === "Circle") {
         drawn.style.width = `${object.radius}px`;
@@ -111,17 +126,47 @@ function Draw(object) {
         drawn.style.borderRadius = "50%";
         drawn.style.backgroundColor = backgroundColor;
     } else if (object.type === "Triangle") {
-        drawn.style.width = "0";
-        drawn.style.height = "0";
-        drawn.style.borderLeft = `${object.base / 2}px solid transparent`;
-        drawn.style.borderRight = `${object.base / 2}px solid transparent`;
-        drawn.style.borderBottom = `${object.height}px solid ${backgroundColor}`;
+        const body = document.querySelector("body");
+        const canvas = document.createElement("canvas");
+
+        canvas.width = object.size.x
+        canvas.height = object.size.y
+
+        body.appendChild(canvas); 
+        const ctx = canvas.getContext("2d");
+
+        const x1 = 40 / 2
+        const y1 = 0
+
+        const x2 = 0
+        const y2 = 40
+
+        const x3 = 40
+        const y3 = 40
+
+
+        ctx.fillStyle = "red";
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.lineTo(x3, y3);
+        ctx.closePath();
+        ctx.fill();  
+
+        canvas.classList.add("object")
+        canvas.style.position = "absolute";
+        canvas.style.left = `${position.x}px`;
+        canvas.style.top = `${position.y}px`;
+        canvas.style.transform = `rotate(${rotation}deg)`;
+
+        body.appendChild(canvas);
+        return;
     }
 
     Object.assign(drawn.style, {
         position: "absolute",
-        left: `${pX}px`,
-        top: `${pY}px`,
+        left: `${position.x}px`,
+        top: `${position.y}px`,
         transform: `rotate(${rotation}deg)`,
         transformOrigin: "center center"
     });
@@ -139,4 +184,4 @@ function Fill(fillColor = new colorRGBA()) {
     body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
 }
 
-export { colorRGBA, Rect, Circle, Triangle, Key, Draw, Fill};
+export { colorRGBA, Rect, Vector2, Circle, Triangle, Key, Draw, Fill};
