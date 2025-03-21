@@ -23,7 +23,7 @@ class Player {
 
 let run = true;
 let inputs = new Key;
-let windowSize = new Vector2(document.querySelector(".container").clientWidth, document.querySelector(".container").clientHeight);
+let windowSize = new Vector2(document.querySelector("html").clientWidth, document.querySelector("html").clientHeight);
 let player = new Player(0.05, 5, 0.05, 2, new Vector2(windowSize.x/2, windowSize.y/2 - 20));
 
 let lastTime = performance.now();
