@@ -10,6 +10,14 @@ class Player {
 		this.moving = false;
 		this.direction = new Vector2(0, 1);
 		this.model = new Triangle(spawnLocation, size, fillColor, 0);
+
+        this.bullets = [];
+        this.shootCooldown = 500;
+        this.lastShot = 0;
+	}
+
+    shoot() {
+        this.bullets.push(new Bullet(5, 1000, performance.now(), this.rotationToVector(this.model.rotation), new Vector2(this.model.position.x, this.model.position.y)));
 	}
 
 	rotationToVector(degrees) {
@@ -18,6 +26,17 @@ class Player {
 			x: Math.sin(radians),
 			y: -Math.cos(radians)
 		};
+	}
+}
+
+class Bullet {
+    constructor(bulletSpeed, bulletLifetime, bulletCreationTime, rotationAngleVector, position = new Vector2(0, 0)) {
+        this.bulletSpeed = bulletSpeed;
+        this.bulletLifetime = bulletLifetime;
+        this.rotationAngleVector = rotationAngleVector;
+        this.position = position;
+        this.bulletCreationTime = bulletCreationTime
+        this.model = new Rect(position, new Vector2(3, 3), new colorRGBA(0, 4, 73, 0))
 	}
 }
 
