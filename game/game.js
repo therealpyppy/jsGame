@@ -54,6 +54,7 @@ function update() {
 
     let keys = inputs.get_pressed();
 
+    // detect player movement & add speed if moving
     if (keys['w'] && player.speed < player.maxSpeed) {
         player.speed += player.acceleration * deltaTime;
         player.moving = true;
@@ -61,6 +62,7 @@ function update() {
         player.moving = false;
     }
 
+    // detect and add player rotation
     if (keys['q'] || keys['a']){ player.model.rotation -= player.rotateSpeed * deltaTime;}
     if (keys['e'] || keys['d']){ player.model.rotation += player.rotateSpeed * deltaTime;}
 
