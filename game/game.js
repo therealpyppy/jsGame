@@ -114,20 +114,22 @@ function update() {
         if (player.speed < 0) player.speed = 0;
     }
 
-    if (player.model.position.y > windowSize.y + (player.model.size.y - 5)) {
-        player.model.position.y = 0 - (player.model.size.y - 5);
+    // wrap player on window    
+    if (player.model.position.y > windowSize.y + (player.model.size.y/2)) {
+        player.model.position.y = 0 - (player.model.size.y/2);
     }
-    if (player.model.position.y < 0 - (player.model.size.y - 5)) {
-        player.model.position.y += windowSize.y + (player.model.size.y - 5);
+    if (player.model.position.y < 0 - (player.model.size.y/2)) {
+        player.model.position.y += windowSize.y + (player.model.size.y/2);
     }
-    if (player.model.position.x > windowSize.x + (player.model.size.x - 5)) {
-        player.model.position.x = 0 - (player.model.size.x - 5);
+    if (player.model.position.x > windowSize.x + (player.model.size.x/2)) {
+        player.model.position.x = 0 - (player.model.size.x/2);
     }
-    if (player.model.position.x < 0 - (player.model.size.x - 5)) {
-        player.model.position.x += windowSize.x + (player.model.size.x - 5);
+    if (player.model.position.x < 0 - (player.model.size.x/2)) {
+        player.model.position.x += windowSize.x + (player.model.size.x/2);
     }
 
-    //console.log(player);
+    // not visible ever but loops player rotation from 360 > 0 and vice versa
+    player.model.rotation %= 360
 }
 
 
