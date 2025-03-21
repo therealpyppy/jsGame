@@ -70,6 +70,36 @@ function update() {
         vectorDirection.y * player.speed * deltaTime
     );
 
+    for (let i = player.bullets.length - 1; i >= 0; i--) {
+        const element = player.bullets[i];
+    
+        if (now - element.bulletCreationTime < element.bulletLifetime) {
+            element.model.position.addVector(
+                element.rotationAngleVector.x * element.bulletSpeed * deltaTime,
+                element.rotationAngleVector.y * element.bulletSpeed * deltaTime
+            );
+    
+            // Wrap bullets off screen
+            const halfSizeX = element.model.size.x / 2;
+            const halfSizeY = element.model.size.y / 2;
+            if (element.model.position.y > windowSize.y + halfSizeY) {
+                element.model.position.y = -halfSizeY;
+            } else if (element.model.position.y < -halfSizeY) {
+                element.model.position.y = windowSize.y + halfSizeY;
+            }
+    
+            if (element.model.position.x > windowSize.x + halfSizeX) {
+                element.model.position.x = -halfSizeX;
+            } else if (element.model.position.x < -halfSizeX) {
+                element.model.position.x = windowSize.x + halfSizeX;
+            }
+        } else {
+            delete element.model;
+            player.bullets.splice(i, 1);
+        }
+    }    
+
+    // add player drag if !moving
     if (!player.moving) {
         player.speed -= player.drag * deltaTime;
         if (player.speed < 0) player.speed = 0;
