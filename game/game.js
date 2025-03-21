@@ -64,6 +64,13 @@ function update() {
     if (keys['q'] || keys['a']){ player.model.rotation -= player.rotateSpeed * deltaTime;}
     if (keys['e'] || keys['d']){ player.model.rotation += player.rotateSpeed * deltaTime;}
 
+    // detect keypress and shoot
+    if ((keys[' '] || keys['Space']) && now - player.lastShot >= player.shootCooldown) { 
+        player.lastShot = now;
+        player.shoot();
+    }    
+
+    // update player position
     let vectorDirection = player.rotationToVector(player.model.rotation);
     player.model.position.addVector(
         vectorDirection.x * player.speed * deltaTime,
