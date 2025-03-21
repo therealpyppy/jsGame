@@ -136,6 +136,9 @@ function update() {
 function render(){
 	Fill(new colorRGBA())
 	Draw(player.model)
+    player.bullets.forEach(bullet => {
+        Draw(bullet.model)
+    });
 }
 
 function gameLoop(){
