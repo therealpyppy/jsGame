@@ -110,17 +110,17 @@ class Polygon {
     constructor(position = new Vector2(), points = [new Vector2(0,0), new Vector2(40,0), new Vector2(40,40), new Vector2(0,40)], fillColor = new colorRGBA(), rotation = 0) {
         this.position = position;
         this.points = points
-        this.size = this.calcSize;
+        this.size = this.calcSize();
         this.fillColor = fillColor;
         this.rotation = rotation;
         this.type = "Polygon";
         this.dataType = "DrawableObject";
     }
 
-    calcSize(points) {
+    calcSize() {
         let maxX = 0;
         let maxY = 0;
-        points.forEach(point => {
+        this.points.forEach(point => {
             let x = point.x;
             let y = point.y;
             if (x > maxX){
@@ -189,6 +189,37 @@ function Draw(object) {
 
         body.appendChild(canvas);
         return;
+    } else if (object.type === "Polygon") {
+        const body = document.querySelector("body");
+        const canvas = document.createElement("canvas");
+
+        canvas.width = object.size.x
+        canvas.height = object.size.y
+        console.log(object.size)
+
+        body.appendChild(canvas); 
+        const ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+
+        ctx.fillStyle = backgroundColor;
+        ctx.beginPath();
+        object.points.forEach(point => {
+            let x = point.x
+            let y = point.y
+            ctx.lineTo(x, y);
+        });
+        ctx.closePath();
+        ctx.fill();  
+
+
+        canvas.classList.add("object")
+        canvas.style.position = "absolute";
+        canvas.style.left = `${position.x}px`;
+        canvas.style.top = `${position.y}px`;
+        canvas.style.transform = `rotate(${rotation}deg)`;
+
+        body.appendChild(canvas);
+        return;
     }
 
     Object.assign(drawn.style, {
@@ -212,4 +243,4 @@ function Fill(fillColor = new colorRGBA()) {
     body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
 }
 
-export { colorRGBA, Rect, Vector2, Circle, Triangle, Key, Draw, Fill};
+export { colorRGBA, Rect, Vector2, Circle, Triangle, Polygon, Key, Draw, Fill};
