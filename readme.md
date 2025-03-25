@@ -1,5 +1,5 @@
 # JSGame
-## Essential just me remaking PyGame but in javascript
+## Essential just me remaking PyGame but in Javascript
 
 ## Classes
 
