@@ -173,7 +173,7 @@ function Draw(object) {
         const y3 = object.size.y
 
 
-        ctx.fillStyle = "red";
+        ctx.fillStyle = backgroundColor;
         ctx.beginPath();
         ctx.moveTo(x1, y1);
         ctx.lineTo(x2, y2);
