@@ -163,14 +163,14 @@ function Draw(object) {
         body.appendChild(canvas); 
         const ctx = canvas.getContext("2d");
 
-        const x1 = 40 / 2
+        const x1 = object.size.x / 2
         const y1 = 0
 
         const x2 = 0
-        const y2 = 40
+        const y2 = object.size.y
 
-        const x3 = 40
-        const y3 = 40
+        const x3 = object.size.x
+        const y3 = object.size.y
 
 
         ctx.fillStyle = "red";
