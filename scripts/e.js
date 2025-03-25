@@ -106,6 +106,34 @@ class Triangle {
     }
 }
 
+class Polygon {
+    constructor(position = new Vector2(), points = [new Vector2(0,0), new Vector2(40,0), new Vector2(40,40), new Vector2(0,40)], fillColor = new colorRGBA(), rotation = 0) {
+        this.position = position;
+        this.points = points
+        this.size = this.calcSize;
+        this.fillColor = fillColor;
+        this.rotation = rotation;
+        this.type = "Polygon";
+        this.dataType = "DrawableObject";
+    }
+
+    calcSize(points) {
+        let maxX = 0;
+        let maxY = 0;
+        points.forEach(point => {
+            let x = point.x;
+            let y = point.y;
+            if (x > maxX){
+                maxX = x;
+            }
+            if (y > maxY){
+                maxY = y;
+            }
+        });
+        return new Vector2(maxX, maxY);
+    }
+}
+
 function Draw(object) {
     if (object.dataType !== "DrawableObject") {
         return;
