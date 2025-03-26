@@ -195,7 +195,6 @@ function Draw(object) {
 
         canvas.width = object.size.x
         canvas.height = object.size.y
-        console.log(object.size)
 
         body.appendChild(canvas); 
         const ctx = canvas.getContext("2d");
