@@ -14,6 +14,8 @@ class Player {
         this.bullets = [];
         this.shootCooldown = 500;
         this.lastShot = 0;
+
+        this.level = 1;
 	}
 
     shoot() {
