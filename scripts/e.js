@@ -134,6 +134,38 @@ class Polygon {
     }
 }
 
+
+class UIPanel{
+    constructor(parent = document.body, size = new Vector2(400, 200), position = new Vector2(), fillColor = new colorRGBA(), style = {}){
+        this.type = "Panel"
+        this.dataType = "UIElement"
+        
+        this.parent = parent
+        this.size = size
+        this.position = position
+        this.fillColor = fillColor
+    
+        this.style = style
+
+        this.element = this.render()
+    }
+
+    render() {
+        let panel = document.createElement("div")
+        Object.assign(panel.style, {
+            position: `absolute`,
+            left: `${this.position.x}px`,
+            top: `${this.position.y}px`,
+            width: `${this.size.x}px`,
+            height: `${this.size.y}px`,
+            backgroundColor: `rgba(${this.fillColor.R}, ${this.fillColor.G}, ${this.fillColor.B}, ${this.fillColor.A})`
+        })
+        Object.assign(panel.style, this.style)
+        this.parent.appendChild(panel)
+        return panel
+    }
+}
+
 function Draw(object) {
     if (object.dataType !== "DrawableObject") {
         return;
