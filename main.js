@@ -10,7 +10,7 @@ let polyPoints = [
     new Vector2(0, 40),
     new Vector2(90, 40),
     new Vector2(70, 0),
-    new Vector2(20, 0),
+    new Vector2(20, 0)
 ];
 let testPoly = new Polygon(new Vector2(450, 200), polyPoints, new colorRGBA(255, 0, 0, 0), 0)
 
