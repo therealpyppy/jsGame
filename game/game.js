@@ -1,4 +1,4 @@
-import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2} from '../scripts/e.js';
+import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2, Polygon} from '../scripts/e.js';
 
 class Player {
 	constructor(drag, maxSpeed, acceleration, rotateSpeed, spawnLocation = new Vector2(0, 0), size = new Vector2(40, 40), fillColor = new colorRGBA(255, 0, 0, 0)){
