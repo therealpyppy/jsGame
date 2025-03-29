@@ -29,6 +29,56 @@ class Player {
 	}
 }
 
+class Asteroid {
+    getShape(size = "Large") {
+        switch (size) {
+            case "Large":
+                return [
+                    new Vector2(47, 0),
+                    new Vector2(60, 5),
+                    new Vector2(68, 13),
+                    new Vector2(81, 21),
+                    new Vector2(90, 36),
+                    new Vector2(92, 45),
+                    new Vector2(82, 60),
+                    new Vector2(72, 71),
+                    new Vector2(60, 77),
+                    new Vector2(52, 84),
+                    new Vector2(47, 86),
+                    new Vector2(42, 82),
+                    new Vector2(30, 80),
+                    new Vector2(25, 75),
+                    new Vector2(19, 74),
+                    new Vector2(10, 64),
+                    new Vector2(4, 50),
+                    new Vector2(0, 45),
+                    new Vector2(4, 35),
+                    new Vector2(13, 28),
+                    new Vector2(16, 23),
+                    new Vector2(28, 16),
+                    new Vector2(31, 10),
+                    new Vector2(34, 4),
+                ]
+            case "Medium":
+                break;
+            case "Small":
+                break;
+            default:
+                break;
+        }
+    }
+
+    constructor(size = "Large", position, color, rotation, rotationSpeed) {
+        this.size = size;
+        this.position = position;
+        this.fillColor = color;
+        this.rotation = rotation;
+        this.rotateSpeed = rotationSpeed;
+        
+        this.model = new Polygon(this.position, this.getShape(this.size), this.fillColor, this.rotation);
+    }
+}
+
 class Bullet {
     constructor(bulletSpeed, bulletLifetime, bulletCreationTime, rotationAngleVector, position = new Vector2(0, 0)) {
         this.bulletSpeed = bulletSpeed;
