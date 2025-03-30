@@ -123,10 +123,10 @@ class Polygon {
         this.points.forEach(point => {
             let x = point.x;
             let y = point.y;
-            if (x > maxX){
+            if (x > maxX) {
                 maxX = x;
             }
-            if (y > maxY){
+            if (y > maxY) {
                 maxY = y;
             }
         });
@@ -134,9 +134,8 @@ class Polygon {
     }
 }
 
-
 class UIPanel{
-    constructor(parent = document.body, size = new Vector2(400, 200), position = new Vector2(), fillColor = new colorRGBA(), style = {}){
+    constructor(parent = document.body, size = new Vector2(400, 200), position = new Vector2(), fillColor = new colorRGBA(), style = {}, verticleAlign="center", horizontalAlign="left") {
         this.type = "Panel"
         this.dataType = "UIElement"
         
@@ -144,6 +143,8 @@ class UIPanel{
         this.size = size
         this.position = position
         this.fillColor = fillColor
+        this.verticleAlign = verticleAlign
+        this.horizontalAlign = horizontalAlign
     
         this.style = style
 
@@ -158,7 +159,65 @@ class UIPanel{
             top: `${this.position.y}px`,
             width: `${this.size.x}px`,
             height: `${this.size.y}px`,
-            backgroundColor: `rgba(${this.fillColor.R}, ${this.fillColor.G}, ${this.fillColor.B}, ${this.fillColor.A})`
+            backgroundColor: `rgba(${this.fillColor.R}, ${this.fillColor.G}, ${this.fillColor.B}, ${this.fillColor.A})`,
+            display: "flex",
+            justifyContent: this.horizontalAlign,
+            alignItems: this.verticleAlign
+        })
+        Object.assign(panel.style, this.style)
+        this.parent.appendChild(panel)
+        return panel
+    }
+}
+
+class UIText{
+    constructor(parent = document.body, size = new Vector2(400, 200), position = new Vector2(), 
+    fillColor = new colorRGBA(), horizontalAlign="left", verticleAlign="center", text, 
+    fontFamily="sans-serif", fontSize=16, fontStyle="normal", fontWeight="normal",
+    fontColor=new colorRGBA(0, 0, 0, 0), textAlign="left", style = {}) {
+        this.type = "Text"
+        this.dataType = "UIElement"
+        
+        this.parent = parent
+        this.size = size
+        this.position = position
+        this.fillColor = fillColor
+        this.verticleAlign = verticleAlign
+        this.horizontalAlign = horizontalAlign
+        
+        this.text = text
+        this.textAlign = textAlign
+        this.fontFamily = fontFamily
+        this.fontSize = fontSize
+        this.fontStyle = fontStyle
+        this.fontWeight = fontWeight
+        this.fontColor = fontColor
+
+        this.style = style
+
+        this.element = this.render()
+    }
+
+    render() {
+        let panel = document.createElement("div")
+        panel.textContent = this.text
+        Object.assign(panel.style, {
+            position: `absolute`,
+            left: `${this.position.x}px`,
+            top: `${this.position.y}px`,
+            width: `${this.size.x}px`,
+            height: `${this.size.y}px`,
+            backgroundColor: `rgba(${this.fillColor.R}, ${this.fillColor.G}, ${this.fillColor.B}, ${this.fillColor.A})`,
+            display: "flex",
+            justifyContent: this.horizontalAlign,
+            alignItems: this.verticleAlign,
+
+            textAlign: this.textAlign,
+            fontFamily: this.fontFamily,
+            fontSize: `${this.fontSize}px`,
+            fontStyle: this.fontStyle,
+            fontWeight: this.fontWeight,
+            color: `rgba(${this.fontColor.R}, ${this.fontColor.G}, ${this.fontColor.B}, ${this.fontColor.A})`
         })
         Object.assign(panel.style, this.style)
         this.parent.appendChild(panel)
@@ -171,7 +230,7 @@ function Draw(object) {
         return;
     }
 
-    const body = document.querySelector("body");
+    const body = document.body;
     const drawn = document.createElement("div");
     const { fillColor, position, rotation } = object;
     const backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
@@ -186,7 +245,7 @@ function Draw(object) {
         drawn.style.borderRadius = "50%";
         drawn.style.backgroundColor = backgroundColor;
     } else if (object.type === "Triangle") {
-        const body = document.querySelector("body");
+        const body = document.body;
         const canvas = document.createElement("canvas");
 
         canvas.width = object.size.x
@@ -222,7 +281,7 @@ function Draw(object) {
         body.appendChild(canvas);
         return;
     } else if (object.type === "Polygon") {
-        const body = document.querySelector("body");
+        const body = document.body;
         const canvas = document.createElement("canvas");
 
         canvas.width = object.size.x
@@ -266,7 +325,7 @@ function Draw(object) {
 }
 
 function Fill(fillColor = new colorRGBA()) {
-    let body = document.querySelector("body");
+    let body = document.body;
 
     let objects = document.querySelectorAll(".object");
     objects.forEach(obj => obj.remove());
@@ -274,4 +333,4 @@ function Fill(fillColor = new colorRGBA()) {
     body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
 }
 
-export { colorRGBA, Rect, Vector2, Circle, Triangle, Polygon, Key, Draw, Fill};
+export { colorRGBA, Rect, Vector2, Circle, Triangle, Polygon, Key, UIPanel, UIText, Draw, Fill};
