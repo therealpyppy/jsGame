@@ -56,8 +56,9 @@ class Asteroid {
         }
     }
 
-    constructor(size = "Large", position, color, rotation, rotationSpeed) {
+    constructor(size = "Large", position, speed, color, rotation, rotationSpeed) {
         this.size = size;
+        this.speed = speed
         this.position = position;
         this.fillColor = color;
         this.rotation = rotation;
