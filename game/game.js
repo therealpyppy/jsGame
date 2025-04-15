@@ -50,6 +50,7 @@ class Asteroid {
                 ]
                 break;
             case "Small":
+                console.log("There is no vector sheet set for a [size small] astroid");
                 break;
             default:
                 break;
