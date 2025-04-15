@@ -107,7 +107,6 @@ class Player {
 		this.rotationToVector(this.model.rotation),
 		new Vector2(tipX, tipY)
 	));
-	console.log((this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance));
 }
 
 rotationToVector(degrees) {
