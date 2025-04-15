@@ -1,4 +1,4 @@
-import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2, Polygon} from '../scripts/e.js';
+import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2, Polygon } from '../scripts/e.js';
 
 class Asteroid {
 	getShape(size = "Large") {
@@ -29,7 +29,7 @@ class Asteroid {
 				new Vector2(28, 16),
 				new Vector2(31, 10),
 				new Vector2(34, 4),
-			]
+			];
 			case "Medium":
 			return [
 				new Vector2(18, 0),
@@ -47,8 +47,7 @@ class Asteroid {
 				new Vector2(3, 16),
 				new Vector2(9, 10),
 				new Vector2(14, 3)
-			]
-			break;
+			];
 			case "Small":
 			console.log("There is no vector sheet set for a [size small] astroid");
 			break;
@@ -59,7 +58,7 @@ class Asteroid {
 	
 	constructor(size = "Large", position, speed, color, rotation, rotationSpeed) {
 		this.size = size;
-		this.speed = speed
+		this.speed = speed;
 		this.position = position;
 		this.fillColor = color;
 		this.rotation = rotation;
@@ -75,13 +74,13 @@ class Bullet {
 		this.bulletLifetime = bulletLifetime;
 		this.rotationAngleVector = rotationAngleVector;
 		this.position = position;
-		this.bulletCreationTime = bulletCreationTime
-		this.model = new Rect(position, new Vector2(3, 3), new colorRGBA(0, 4, 73, 0))
+		this.bulletCreationTime = bulletCreationTime;
+		this.model = new Rect(position, new Vector2(3, 3), new colorRGBA(0, 4, 73, 0));
 	}
 }
 
 class Player {
-	constructor(drag, maxSpeed, acceleration, rotateSpeed, spawnLocation = new Vector2(0, 0), size = new Vector2(40, 40), fillColor = new colorRGBA(255, 0, 0, 0)){
+	constructor(drag, maxSpeed, acceleration, rotateSpeed, spawnLocation = new Vector2(0, 0), size = new Vector2(40, 40), fillColor = new colorRGBA(255, 0, 0, 0)) {
 		this.drag = drag;
 		this.speed = 0;
 		this.maxSpeed = maxSpeed;
@@ -101,14 +100,14 @@ class Player {
 	shoot() {
 		let tipDistance = this.model.size.y / 2;
 		
-		let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI/180)) * tipDistance) - 5/2;
-		let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI/180)) * tipDistance) - 5/2;
+		let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
+		let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
 		
-		this.bullets.push(new Bullet(5, 1000, performance.now(), 
+		this.bullets.push(new Bullet(5, 1000, performance.now(),
 		this.rotationToVector(this.model.rotation),
 		new Vector2(tipX, tipY)
 	));
-	console.log((this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI/180)) * tipDistance))
+	console.log((this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance));
 }
 
 rotationToVector(degrees) {
@@ -121,9 +120,9 @@ rotationToVector(degrees) {
 }
 
 let run = true;
-let inputs = new Key;
+let inputs = new Key();
 let windowSize = new Vector2(document.querySelector("html").clientWidth, document.querySelector("html").clientHeight);
-let player = new Player(0.05, 5, 0.05, 2, new Vector2(windowSize.x/2, windowSize.y/2 - 20));
+let player = new Player(0.05, 5, 0.05, 2, new Vector2(windowSize.x / 2, windowSize.y / 2 - 20));
 
 let lastTime = performance.now();
 
@@ -143,15 +142,13 @@ function update() {
 		player.moving = false;
 	}
 	
-	// player rotation
-	if (keys['q'] || keys['a']){ player.model.rotation -= player.rotateSpeed * deltaTime;}
-	if (keys['e'] || keys['d']){ player.model.rotation += player.rotateSpeed * deltaTime;}
+	if (keys['q'] || keys['a']) { player.model.rotation -= player.rotateSpeed * deltaTime; }
+	if (keys['e'] || keys['d']) { player.model.rotation += player.rotateSpeed * deltaTime; }
 	
-	// shoot
-	if ((keys[' '] || keys['Space']) && now - player.lastShot >= player.shootCooldown) { 
+	if ((keys[' '] || keys['Space']) && now - player.lastShot >= player.shootCooldown) {
 		player.lastShot = now;
 		player.shoot();
-	}    
+	}
 	
 	// player position
 	let vectorDirection = player.rotationToVector(player.model.rotation);
@@ -169,7 +166,7 @@ function update() {
 				bullet.rotationAngleVector.y * bullet.bulletSpeed * deltaTime
 			);
 			
-			// Wrap bullets off screen
+			// Wrap bullets that go off screen
 			const halfSizeX = bullet.model.size.x / 2;
 			const halfSizeY = bullet.model.size.y / 2;
 			if (bullet.model.position.y > windowSize.y + halfSizeY) {
@@ -187,7 +184,7 @@ function update() {
 			delete bullet.model;
 			player.bullets.splice(i, 1);
 		}
-	}    
+	}
 	
 	// player drag if !moving
 	if (!player.moving) {
@@ -209,23 +206,22 @@ function update() {
 	player.model.rotation %= 360;
 }
 
-
-function render(){
-	Fill(new colorRGBA())
-	Draw(player.model)
+function render() {
+	Fill(new colorRGBA());
+	Draw(player.model);
 	player.bullets.forEach(bullet => {
-		Draw(bullet.model)
+		Draw(bullet.model);
 	});
 }
 
-function gameLoop(){
+function gameLoop() {
 	if (run) {
-		update()
-		render()
+		update();
+		render();
 		setTimeout(gameLoop, 1);
 	}
 }
 
-if (run){
-	gameLoop()
+if (run) {
+	gameLoop();
 }
