@@ -97,8 +97,10 @@ class Player {
 	}
 
     shoot() {
-        this.bullets.push(new Bullet(5, 1000, performance.now(), this.rotationToVector(this.model.rotation), new Vector2(this.model.position.x, this.model.position.y)));
-	}
+        this.bullets.push(new Bullet(5, 1000, performance.now(), 
+        this.rotationToVector(this.model.rotation),
+        new Vector2(this.model.position.x, this.model.position.y)));
+    }
 
 	rotationToVector(degrees) {
 		let radians = degrees * (Math.PI / 180);
