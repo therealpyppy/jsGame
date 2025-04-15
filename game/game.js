@@ -99,9 +99,16 @@ class Player {
 	}
 
     shoot() {
+        let tipDistance = this.model.size.y / 2;
+
+        let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI/180)) * tipDistance) - 5/2;
+        let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI/180)) * tipDistance) - 5/2;
+
         this.bullets.push(new Bullet(5, 1000, performance.now(), 
         this.rotationToVector(this.model.rotation),
-        new Vector2(this.model.position.x, this.model.position.y)));
+        new Vector2(tipX, tipY)
+        ));
+        console.log((this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI/180)) * tipDistance))
     }
 
 	rotationToVector(degrees) {
@@ -154,30 +161,30 @@ function update() {
     );
 
     for (let i = player.bullets.length - 1; i >= 0; i--) {
-        const element = player.bullets[i];
+        const bullet = player.bullets[i];
     
-        if (now - element.bulletCreationTime < element.bulletLifetime) {
-            element.model.position.addVector(
-                element.rotationAngleVector.x * element.bulletSpeed * deltaTime,
-                element.rotationAngleVector.y * element.bulletSpeed * deltaTime
+        if (now - bullet.bulletCreationTime < bullet.bulletLifetime) {
+            bullet.model.position.addVector(
+                bullet.rotationAngleVector.x * bullet.bulletSpeed * deltaTime,
+                bullet.rotationAngleVector.y * bullet.bulletSpeed * deltaTime
             );
     
             // Wrap bullets off screen
-            const halfSizeX = element.model.size.x / 2;
-            const halfSizeY = element.model.size.y / 2;
-            if (element.model.position.y > windowSize.y + halfSizeY) {
-                element.model.position.y = -halfSizeY;
-            } else if (element.model.position.y < -halfSizeY) {
-                element.model.position.y = windowSize.y + halfSizeY;
+            const halfSizeX = bullet.model.size.x / 2;
+            const halfSizeY = bullet.model.size.y / 2;
+            if (bullet.model.position.y > windowSize.y + halfSizeY) {
+                bullet.model.position.y = -halfSizeY;
+            } else if (bullet.model.position.y < -halfSizeY) {
+                bullet.model.position.y = windowSize.y + halfSizeY;
             }
     
-            if (element.model.position.x > windowSize.x + halfSizeX) {
-                element.model.position.x = -halfSizeX;
-            } else if (element.model.position.x < -halfSizeX) {
-                element.model.position.x = windowSize.x + halfSizeX;
+            if (bullet.model.position.x > windowSize.x + halfSizeX) {
+                bullet.model.position.x = -halfSizeX;
+            } else if (bullet.model.position.x < -halfSizeX) {
+                bullet.model.position.x = windowSize.x + halfSizeX;
             }
         } else {
-            delete element.model;
+            delete bullet.model;
             player.bullets.splice(i, 1);
         }
     }    
@@ -188,23 +195,18 @@ function update() {
         if (player.speed < 0) player.speed = 0;
     }
 
-    // player on window
-    // Add cloned player object 
-    if (player.model.position.y > windowSize.y + (player.model.size.y/2)) {
-        player.model.position.y = 0 - (player.model.size.y/2);
-    }
-    if (player.model.position.y < 0 - (player.model.size.y/2)) {
-        player.model.position.y += windowSize.y + (player.model.size.y/2);
-    }
-    if (player.model.position.x > windowSize.x + (player.model.size.x/2)) {
-        player.model.position.x = 0 - (player.model.size.x/2);
-    }
-    if (player.model.position.x < 0 - (player.model.size.x/2)) {
-        player.model.position.x += windowSize.x + (player.model.size.x/2);
-    }
+    // TODO: wrap player on window
+    let playerPos = player.model.position;
+    let playerSize = player.model.size;
+    let radians = player.model.rotation * (Math.PI / 180);
+
+    let tipDistance = playerSize.y / 2;
+
+    let tipX = (playerPos.x + playerSize.x / 2 + Math.sin(radians) * tipDistance);
+    let tipY = (playerPos.y + playerSize.y / 2 + -Math.cos(radians) * tipDistance);
 
     // not visible ever but loops player rotation from 360 > 0 and vice versa
-    player.model.rotation %= 360
+    player.model.rotation %= 360;
 }
 
 
