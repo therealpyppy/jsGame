@@ -123,7 +123,8 @@ function update() {
 
     let keys = inputs.get_pressed();
 
-    // detect player movement & add speed if moving
+    // Inputs
+    // player movement & add speed
     if (keys['w'] && player.speed < player.maxSpeed) {
         player.speed += player.acceleration * deltaTime;
         player.moving = true;
@@ -131,17 +132,17 @@ function update() {
         player.moving = false;
     }
 
-    // detect and add player rotation
+    // player rotation
     if (keys['q'] || keys['a']){ player.model.rotation -= player.rotateSpeed * deltaTime;}
     if (keys['e'] || keys['d']){ player.model.rotation += player.rotateSpeed * deltaTime;}
 
-    // detect keypress and shoot
+    // shoot
     if ((keys[' '] || keys['Space']) && now - player.lastShot >= player.shootCooldown) { 
         player.lastShot = now;
         player.shoot();
     }    
 
-    // update player position
+    // player position
     let vectorDirection = player.rotationToVector(player.model.rotation);
     player.model.position.addVector(
         vectorDirection.x * player.speed * deltaTime,
@@ -177,13 +178,14 @@ function update() {
         }
     }    
 
-    // add player drag if !moving
+    // player drag if !moving
     if (!player.moving) {
         player.speed -= player.drag * deltaTime;
         if (player.speed < 0) player.speed = 0;
     }
 
-    // wrap player on window    
+    // player on window
+    // Add cloned player object 
     if (player.model.position.y > windowSize.y + (player.model.size.y/2)) {
         player.model.position.y = 0 - (player.model.size.y/2);
     }
