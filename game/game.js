@@ -1,36 +1,5 @@
 import { colorRGBA, Rect, Draw, Triangle, Key, Circle, Fill, Vector2, Polygon} from '../scripts/e.js';
 
-class Player {
-	constructor(drag, maxSpeed, acceleration, rotateSpeed, spawnLocation = new Vector2(0, 0), size = new Vector2(40, 40), fillColor = new colorRGBA(255, 0, 0, 0)){
-		this.drag = drag;
-		this.speed = 0;
-		this.maxSpeed = maxSpeed;
-		this.acceleration = acceleration;
-		this.rotateSpeed = rotateSpeed;
-		this.moving = false;
-		this.direction = new Vector2(0, 1);
-		this.model = new Triangle(spawnLocation, size, fillColor, 0);
-
-        this.bullets = [];
-        this.shootCooldown = 500;
-        this.lastShot = 0;
-
-        this.level = 1;
-	}
-
-    shoot() {
-        this.bullets.push(new Bullet(5, 1000, performance.now(), this.rotationToVector(this.model.rotation), new Vector2(this.model.position.x, this.model.position.y)));
-	}
-
-	rotationToVector(degrees) {
-		let radians = degrees * (Math.PI / 180);
-		return {
-			x: Math.sin(radians),
-			y: -Math.cos(radians)
-		};
-	}
-}
-
 class Asteroid {
     getShape(size = "Large") {
         switch (size) {
@@ -106,6 +75,37 @@ class Bullet {
         this.position = position;
         this.bulletCreationTime = bulletCreationTime
         this.model = new Rect(position, new Vector2(3, 3), new colorRGBA(0, 4, 73, 0))
+	}
+}
+
+class Player {
+	constructor(drag, maxSpeed, acceleration, rotateSpeed, spawnLocation = new Vector2(0, 0), size = new Vector2(40, 40), fillColor = new colorRGBA(255, 0, 0, 0)){
+		this.drag = drag;
+		this.speed = 0;
+		this.maxSpeed = maxSpeed;
+		this.acceleration = acceleration;
+		this.rotateSpeed = rotateSpeed;
+		this.moving = false;
+		this.direction = new Vector2(0, 1);
+		this.model = new Triangle(spawnLocation, size, fillColor, 0);
+
+        this.bullets = [];
+        this.shootCooldown = 500;
+        this.lastShot = 0;
+
+        this.level = 1;
+	}
+
+    shoot() {
+        this.bullets.push(new Bullet(5, 1000, performance.now(), this.rotationToVector(this.model.rotation), new Vector2(this.model.position.x, this.model.position.y)));
+	}
+
+	rotationToVector(degrees) {
+		let radians = degrees * (Math.PI / 180);
+		return {
+			x: Math.sin(radians),
+			y: -Math.cos(radians)
+		};
 	}
 }
 
