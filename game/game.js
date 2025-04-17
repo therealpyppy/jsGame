@@ -4,55 +4,55 @@ class Asteroid {
 	getShape(size = "Large") {
 		switch (size) {
 			case "Large":
-			return [
-				new Vector2(47, 0),
-				new Vector2(60, 5),
-				new Vector2(68, 13),
-				new Vector2(81, 21),
-				new Vector2(90, 36),
-				new Vector2(92, 45),
-				new Vector2(82, 60),
-				new Vector2(72, 71),
-				new Vector2(60, 77),
-				new Vector2(52, 84),
-				new Vector2(47, 86),
-				new Vector2(42, 82),
-				new Vector2(30, 80),
-				new Vector2(25, 75),
-				new Vector2(19, 74),
-				new Vector2(10, 64),
-				new Vector2(4, 50),
-				new Vector2(0, 45),
-				new Vector2(4, 35),
-				new Vector2(13, 28),
-				new Vector2(16, 23),
-				new Vector2(28, 16),
-				new Vector2(31, 10),
-				new Vector2(34, 4),
-			];
+				return [
+					new Vector2(47, 0),
+					new Vector2(60, 5),
+					new Vector2(68, 13),
+					new Vector2(81, 21),
+					new Vector2(90, 36),
+					new Vector2(92, 45),
+					new Vector2(82, 60),
+					new Vector2(72, 71),
+					new Vector2(60, 77),
+					new Vector2(52, 84),
+					new Vector2(47, 86),
+					new Vector2(42, 82),
+					new Vector2(30, 80),
+					new Vector2(25, 75),
+					new Vector2(19, 74),
+					new Vector2(10, 64),
+					new Vector2(4, 50),
+					new Vector2(0, 45),
+					new Vector2(4, 35),
+					new Vector2(13, 28),
+					new Vector2(16, 23),
+					new Vector2(28, 16),
+					new Vector2(31, 10),
+					new Vector2(34, 4),
+				];
 			case "Medium":
-			return [
-				new Vector2(18, 0),
-				new Vector2(24, 2),
-				new Vector2(29, 7),
-				new Vector2(37, 16),
-				new Vector2(42, 22),
-				new Vector2(41, 29),
-				new Vector2(36, 35),
-				new Vector2(30, 39),
-				new Vector2(23, 37),
-				new Vector2(21, 34),
-				new Vector2(6, 33),
-				new Vector2(0, 21),
-				new Vector2(3, 16),
-				new Vector2(9, 10),
-				new Vector2(14, 3)
-			];
+				return [
+					new Vector2(18, 0),
+					new Vector2(24, 2),
+					new Vector2(29, 7),
+					new Vector2(37, 16),
+					new Vector2(42, 22),
+					new Vector2(41, 29),
+					new Vector2(36, 35),
+					new Vector2(30, 39),
+					new Vector2(23, 37),
+					new Vector2(21, 34),
+					new Vector2(6, 33),
+					new Vector2(0, 21),
+					new Vector2(3, 16),
+					new Vector2(9, 10),
+					new Vector2(14, 3)
+				];
 			case "Small":
-			console.log("There is no vector sheet set for a [size small] astroid");
-			break;
+				console.log("There is no vector sheet set for a [size small] astroid");
+				break;
 			default:
-			break;
+				break;
 		}
 	}
 	
