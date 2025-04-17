@@ -56,7 +56,7 @@ class Asteroid {
 		}
 	}
 	
-	constructor(size = "Large", position, speed, color, rotation, rotationSpeed) {
+	constructor(size = "Large", position = new Vector2(0, 0), speed = 0, color = new colorRGBA(), rotation = 0, rotationSpeed = 0) {
 		this.size = size;
 		this.speed = speed;
 		this.position = position;
