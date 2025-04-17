@@ -68,6 +68,16 @@ class Asteroid {
 	}
 }
 
+class AstroidHandler {
+	constructor() {
+		this.astroids = [];
+	}
+
+	spawnAstroid(size, position, speed, color, rotation, rotationSpeed) {
+		this.astroids.push(new Asteroid(size, position, speed, color, rotation, rotationSpeed));
+	}
+}
+
 class Bullet {
 	constructor(bulletSpeed, bulletLifetime, bulletCreationTime, rotationAngleVector, position = new Vector2(0, 0)) {
 		this.bulletSpeed = bulletSpeed;
@@ -122,6 +132,8 @@ let run = true;
 let inputs = new Key();
 let windowSize = new Vector2(document.querySelector("html").clientWidth, document.querySelector("html").clientHeight);
 let player = new Player(0.05, 5, 0.05, 2, new Vector2(windowSize.x / 2, windowSize.y / 2 - 20));
+
+let astroidHandler = new AstroidHandler()
 
 let lastTime = performance.now();
 
