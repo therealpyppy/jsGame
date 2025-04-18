@@ -228,17 +228,7 @@ function update() {
 		player.speed -= player.drag * deltaTime;
 		if (player.speed < 0) player.speed = 0;
 	}
-	
-	// TODO: wrap player on window
-	let playerPos = player.model.position;
-	let playerSize = player.model.size;
-	let radians = player.model.rotation * (Math.PI / 180);
-	
-	let tipDistance = playerSize.y / 2;
-	
-	let tipX = (playerPos.x + playerSize.x / 2 + Math.sin(radians) * tipDistance);
-	let tipY = (playerPos.y + playerSize.y / 2 + -Math.cos(radians) * tipDistance);
-	
+
 	// not visible ever but loops player rotation from 360 > 0 and vice versa
 	player.model.rotation %= 360;
 }
