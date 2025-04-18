@@ -107,15 +107,37 @@ class Player {
 		this.level = 1;
 	}
 	
+	getPoints(point){
+		let centerX = this.model.position.x + this.model.size.x / 2;
+		let centerY = this.model.position.y + this.model.size.y / 2;
+
+		let offsetY = this.model.size.y / 2;
+		
+		switch (point){
+			case "left":
+				let leftOffsetX = -this.model.size.x / 2;
+				let leftX = centerX + leftOffsetX * Math.cos(this.model.rotation * (Math.PI / 180)) - offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) - 5 / 2;
+				let leftY = centerY + offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) + offsetY * Math.cos(this.model.rotation * (Math.PI / 180)) - 5 / 2;
+				return new Vector2(leftX, leftY)
+
+			case "right":
+				let rightOffsetX = this.model.size.x / 2;
+				let rightX = centerX + rightOffsetX * Math.cos(this.model.rotation * (Math.PI / 180)) - offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) - 5 / 2;
+				let rightY = centerY + offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) + offsetY * Math.cos(this.model.rotation * (Math.PI / 180)) - 5 / 2;
+				return new Vector2(rightX, rightY)
+
+			case "tip":
+				let tipDistance = this.model.size.y / 2;
+				let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
+				let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
+				return new Vector2(tipX, tipY)
+		}
+	}
+
 	shoot() {
-		let tipDistance = this.model.size.y / 2;
-		
-		let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
-		let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
-		
 		this.bullets.push(new Bullet(5, 1000, performance.now(),
 		this.rotationToVector(this.model.rotation),
-		new Vector2(tipX, tipY)
+		this.getPoints()
 	));
 }
 
