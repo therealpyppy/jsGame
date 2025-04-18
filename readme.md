@@ -1,3 +1,5 @@
+# Outdated
+
 # JSGame
 ## Essential just me remaking PyGame but in Javascript
 
