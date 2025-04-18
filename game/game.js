@@ -118,26 +118,30 @@ class Player {
 				let leftOffsetX = -this.model.size.x / 2;
 				let leftX = centerX + leftOffsetX * Math.cos(this.model.rotation * (Math.PI / 180)) - offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) - 5 / 2;
 				let leftY = centerY + offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) + offsetY * Math.cos(this.model.rotation * (Math.PI / 180)) - 5 / 2;
-				return new Vector2(leftX, leftY)
+				return new Vector2(leftX, leftY);
 
 			case "right":
 				let rightOffsetX = this.model.size.x / 2;
 				let rightX = centerX + rightOffsetX * Math.cos(this.model.rotation * (Math.PI / 180)) - offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) - 5 / 2;
 				let rightY = centerY + offsetY * Math.sin(this.model.rotation * (Math.PI / 180)) + offsetY * Math.cos(this.model.rotation * (Math.PI / 180)) - 5 / 2;
-				return new Vector2(rightX, rightY)
+				return new Vector2(rightX, rightY);
 
 			case "tip":
 				let tipDistance = this.model.size.y / 2;
 				let tipX = (this.model.position.x + this.model.size.x / 2 + Math.sin(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
 				let tipY = (this.model.position.y + this.model.size.y / 2 + -Math.cos(this.model.rotation * (Math.PI / 180)) * tipDistance) - 5 / 2;
-				return new Vector2(tipX, tipY)
+				return new Vector2(tipX, tipY);
+
+			default:
+				console.log("Point not specified");
+				return new Vector2();
 		}
 	}
 
 	shoot() {
 		this.bullets.push(new Bullet(5, 1000, performance.now(),
 		this.rotationToVector(this.model.rotation),
-		this.getPoints()
+		this.getPoints('tip')
 	));
 }
 
