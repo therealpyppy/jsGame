@@ -100,7 +100,7 @@ class Rect {
 		return newRect;
 	}
 	
-	move_ip(x, y) {
+	moveInPlace(x, y) {
 		this.left += x;
 		this.top += y;
 	}
@@ -112,19 +112,19 @@ class Rect {
 		return newRect;
 	}
 	
-	inflate_ip(x, y) {
+	inflateInPlace(x, y) {
 		this.width += x;
 		this.height += y;
 	}
 	
-	scale_by(x, y) {
+	scaleBy(x, y) {
 		let newRect = this.copy();
 		newRect.width *= x;
 		newRect.height *= y;
 		return newRect;
 	}
 	
-	scale_by_ip(x, y) {
+	scaleByInPlace(x, y) {
 		this.width *= x;
 		this.height *= y;
 	}
@@ -167,7 +167,7 @@ class Rect {
 		return newRect;
 	}
 	
-	clamp_ip(rect) {
+	clampInPlace(rect) {
 		if (this.width > rect.width) {
 			this.left = rect.left+(rect.width/2);
 		} else {
@@ -209,7 +209,7 @@ class Rect {
 		return new Rect(left, top, width, height);
 	}
 
-	union_ip(rect) {
+	unionInPlace(rect) {
 		const left = Math.min(this.left, rect.left);
 		const top = Math.min(this.top, rect.top);
 		const right = Math.max(this.right, rect.right);
@@ -222,6 +222,18 @@ class Rect {
 		this.top = top;
 		this.width = width;
 		this.height = height;
+	}
+
+	union(rect) {
+		const left = Math.min(this.left, rect.left);
+		const top = Math.min(this.top, rect.top);
+		const right = Math.max(this.right, rect.right);
+		const bottom = Math.max(this.bottom, rect.bottom);
+		
+		const width = right - left;
+		const height = bottom - top;
+
+		return new Rect(left, top, width, height);
 	}
 	
 	*[Symbol.iterator]() {
