@@ -110,6 +110,18 @@ class Rect {
 		this.height += y;
 	}
 
+	scale_by(x, y) {
+		let newRect = this.copy();
+		newRect.width *= x;
+		newRect.height *= y;
+		return newRect;
+	}
+
+	scale_by_ip(x, y) {
+		this.width *= x;
+		this.height *= y;
+	}
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
