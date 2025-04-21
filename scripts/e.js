@@ -179,8 +179,8 @@ class Rect {
     clip(rect) {
         const left = Math.max(this.left, rect.left);
         const top = Math.max(this.top, rect.top);
-        const right = Math.min(this.left + this.width, rect.left + rect.width);
-        const bottom = Math.min(this.top + this.height, rect.top + rect.height);
+        const right = Math.min(this.right, rect.right);
+        const bottom = Math.min(this.bottom, rect.bottom);
 
         const width = right - left;
         const height = bottom - top;
