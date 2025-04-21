@@ -111,14 +111,14 @@ class Triangle {
 	}
 
 	calculatePoints() {
-		const x1 = this.base / 2
-		const y1 = 0
+		const x1 = this.base / 2;
+		const y1 = 0;
 
-		const x2 = 0
-		const y2 = this.height
+		const x2 = 0;
+		const y2 = this.height;
 
-		const x3 = this.base
-		const y3 = this.height 
+		const x3 = this.base;
+		const y3 = this.height;
 
 		return [
 			new Vector2(x1, y1),
