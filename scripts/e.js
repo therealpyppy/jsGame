@@ -80,6 +80,13 @@ class Rect {
 		this.type = "Rect";
 		this.dataType = "DrawableObject";
 	}
+
+	*[Symbol.iterator]() {
+		yield this.left;
+		yield this.top;
+		yield this.width;
+		yield this.height;
+	}
 }
 
 class Circle {
