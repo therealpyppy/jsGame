@@ -5,7 +5,7 @@ class Vector2 {
 		this.x = x;
 		this.y = y;
 	}
-
+	
 	addVector(x, y) {
 		this.x += x;
 		this.y += y;
@@ -18,28 +18,28 @@ class Key {
 		this.dataType = "key";
 		this.pressedKeys = keyDictionary;
 		this.focused = true;
-
+		
 		document.addEventListener("keydown", (event) => {
 			this.pressedKeys[event.key] = true;
 		});
-
+		
 		document.addEventListener("keyup", (event) => {
 			this.pressedKeys[event.key] = false;
 		});
-
+		
 		window.addEventListener("focus", () => {
 			this.focused = true;
 		});
-
+		
 		window.addEventListener("blur", () => {
 			this.focused = false;
 		});
 	}
-
+	
 	get_pressed() {
 		return this.pressedKeys;
 	}
-
+	
 	get_focused() {
 		return this.focused;
 	}
@@ -59,40 +59,39 @@ class colorRGBA {
 class Rect {
 	constructor(...args) {
 		if (args.length === 4) {
-            this.left = args[0];
-            this.top = args[1];
-            this.width = args[2];
-            this.height = args[3];
-        } else if (args.length === 2 && Array.isArray(args[0]) && Array.isArray(args[1])) {
-            this.left = args[0][0];
-            this.top = args[0][1];
-            this.width = args[1][0];
-            this.height = args[1][1];
-        } else if (args.length === 1 && typeof args[0] === 'object') {
-            const obj = args[0];
-            this.left = obj.left ?? obj.x ?? 0;
-            this.top = obj.top ?? obj.y ?? 0;
-            this.width = obj.width ?? 0;
-            this.height = obj.height ?? 0;
-        } else {
-            throw new Error('Invalid arguments for Rect');
-        }
+			this.left = args[0];
+			this.top = args[1];
+			this.width = args[2];
+			this.height = args[3];
+		} else if (args.length === 2 && Array.isArray(args[0]) && Array.isArray(args[1])) {
+			this.left = args[0][0];
+			this.top = args[0][1];
+			this.width = args[1][0];
+			this.height = args[1][1];
+		} else if (args.length === 1 && typeof args[0] === 'object') {
+			const obj = args[0];
+			this.left = obj.left ?? obj.x ?? 0;
+			this.top = obj.top ?? obj.y ?? 0;
+			this.width = obj.width ?? 0;
+			this.height = obj.height ?? 0;
+		} else {
+			throw new Error('Invalid arguments for Rect');
+		}
 		this.type = "Rect";
 		this.dataType = "DrawableObject";
 	}
-
+	
 	get right() {
-        return this.left + this.width;
-    }
-
-    get bottom() {
-        return this.top + this.height;
-    }
-
+		return this.left + this.width;
+	}
+	
+	get bottom() {
+		return this.top + this.height;
+	}
+	
 	copy() {
 		return new Rect((this.left, this.top), (this.width, this.height));
 	}
-
 	
 	move(x, y) {
 		let newRect = this.copy();
@@ -100,58 +99,58 @@ class Rect {
 		newRect.top += y;
 		return newRect;
 	}
-
+	
 	move_ip(x, y) {
 		this.left += x;
 		this.top += y;
 	}
-
+	
 	inflate(x, y) {
 		let newRect = this.copy();
 		newRect.width += x;
 		newRect.height += y;
 		return newRect;
 	}
-
+	
 	inflate_ip(x, y) {
 		this.width += x;
 		this.height += y;
 	}
-
+	
 	scale_by(x, y) {
 		let newRect = this.copy();
 		newRect.width *= x;
 		newRect.height *= y;
 		return newRect;
 	}
-
+	
 	scale_by_ip(x, y) {
 		this.width *= x;
 		this.height *= y;
 	}
-
+	
 	update(...args) {
 		if (args.length === 4) {
-            this.left = args[0];
-            this.top = args[1];
-            this.width = args[2];
-            this.height = args[3];
-        } else if (args.length === 2 && Array.isArray(args[0]) && Array.isArray(args[1])) {
-            this.left = args[0][0];
-            this.top = args[0][1];
-            this.width = args[1][0];
-            this.height = args[1][1];
-        } else if (args.length === 1 && typeof args[0] === 'object') {
-            const obj = args[0];
-            this.left = obj.left ?? obj.x ?? 0;
-            this.top = obj.top ?? obj.y ?? 0;
-            this.width = obj.width ?? 0;
-            this.height = obj.height ?? 0;
-        } else {
-            throw new Error('Invalid arguments for Rect');
-        }
+			this.left = args[0];
+			this.top = args[1];
+			this.width = args[2];
+			this.height = args[3];
+		} else if (args.length === 2 && Array.isArray(args[0]) && Array.isArray(args[1])) {
+			this.left = args[0][0];
+			this.top = args[0][1];
+			this.width = args[1][0];
+			this.height = args[1][1];
+		} else if (args.length === 1 && typeof args[0] === 'object') {
+			const obj = args[0];
+			this.left = obj.left ?? obj.x ?? 0;
+			this.top = obj.top ?? obj.y ?? 0;
+			this.width = obj.width ?? 0;
+			this.height = obj.height ?? 0;
+		} else {
+			throw new Error('Invalid arguments for Rect');
+		}
 	}
-
+	
 	clamp(rect) {
 		let newRect = this.copy();
 		if (newRect.width > rect.width) {
@@ -159,7 +158,7 @@ class Rect {
 		} else {
 			newRect.left = rect.left;
 		}
-
+		
 		if (newRect.height > rect.height) {
 			newRect.top = rect.top+(rect.height/2)
 		} else {
@@ -167,37 +166,37 @@ class Rect {
 		}
 		return newRect;
 	}
-
+	
 	clamp_ip(rect) {
 		if (this.width > rect.width) {
 			this.left = rect.left+(rect.width/2);
 		} else {
 			this.left = rect.left;
 		}
-
+		
 		if (this.height > rect.height) {
 			this.top = rect.top+(rect.height/2)
 		} else {
 			this.top = rect.top;
 		}
 	}
-
-    clip(rect) {
-        const left = Math.max(this.left, rect.left);
-        const top = Math.max(this.top, rect.top);
-        const right = Math.min(this.right, rect.right);
-        const bottom = Math.min(this.bottom, rect.bottom);
-
-        const width = right - left;
-        const height = bottom - top;
-
-        if (width <= 0 || height <= 0) {
-            return new Rect(0, 0, 0, 0);
-        }
-
-        return new Rect(left, top, width, height);
-    }
-
+	
+	clip(rect) {
+		const left = Math.max(this.left, rect.left);
+		const top = Math.max(this.top, rect.top);
+		const right = Math.min(this.right, rect.right);
+		const bottom = Math.min(this.bottom, rect.bottom);
+		
+		const width = right - left;
+		const height = bottom - top;
+		
+		if (width <= 0 || height <= 0) {
+			return new Rect(0, 0, 0, 0);
+		}
+		
+		return new Rect(left, top, width, height);
+	}
+	
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
@@ -226,17 +225,17 @@ class Triangle {
 		this.type = "Triangle";
 		this.dataType = "DrawableObject";
 	}
-
+	
 	calculatePoints() {
 		const x1 = this.base / 2;
 		const y1 = 0;
-
+		
 		const x2 = 0;
 		const y2 = this.height;
-
+		
 		const x3 = this.base;
 		const y3 = this.height;
-
+		
 		return [
 			new Vector2(x1, y1),
 			new Vector2(x2, y2),
@@ -255,7 +254,7 @@ class Polygon {
 		this.type = "Polygon";
 		this.dataType = "DrawableObject";
 	}
-
+	
 	calcSize() {
 		let maxX = 0;
 		let maxY = 0;
@@ -284,12 +283,12 @@ class UIPanel{
 		this.fillColor = fillColor
 		this.verticleAlign = verticleAlign
 		this.horizontalAlign = horizontalAlign
-	
+		
 		this.style = style
-
+		
 		this.element = this.render()
 	}
-
+	
 	render() {
 		let panel = document.createElement("div")
 		Object.assign(panel.style, {
@@ -331,12 +330,12 @@ class UIText{
 		this.fontStyle = fontStyle
 		this.fontWeight = fontWeight
 		this.fontColor = fontColor
-
+		
 		this.style = style
-
+		
 		this.element = this.render()
 	}
-
+	
 	render() {
 		let panel = document.createElement("div")
 		panel.textContent = this.text
@@ -350,7 +349,7 @@ class UIText{
 			display: "flex",
 			justifyContent: this.horizontalAlign,
 			alignItems: this.verticleAlign,
-
+			
 			textAlign: this.textAlign,
 			fontFamily: this.fontFamily,
 			fontSize: `${this.fontSize}px`,
@@ -368,12 +367,12 @@ function Draw(object) {
 	if (object.dataType !== "DrawableObject") {
 		return;
 	}
-
+	
 	const body = document.body;
 	const drawn = document.createElement("div");
 	const { fillColor, position, rotation } = object;
 	const backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
-
+	
 	if (object.type === "Rect") {
 		drawn.style.width = `${object.size.x}px`;
 		drawn.style.height = `${object.size.y}px`;
@@ -386,23 +385,23 @@ function Draw(object) {
 	} else if (object.type === "Triangle") {
 		const body = document.body;
 		const canvas = document.createElement("canvas");
-
+		
 		canvas.width = object.size.x
 		canvas.height = object.size.y
-
+		
 		body.appendChild(canvas); 
 		const ctx = canvas.getContext("2d");
-
+		
 		const x1 = object.size.x / 2
 		const y1 = 0
-
+		
 		const x2 = 0
 		const y2 = object.size.y
-
+		
 		const x3 = object.size.x
 		const y3 = object.size.y
-
-
+		
+		
 		ctx.fillStyle = backgroundColor;
 		ctx.beginPath();
 		ctx.moveTo(x1, y1);
@@ -410,26 +409,26 @@ function Draw(object) {
 		ctx.lineTo(x3, y3);
 		ctx.closePath();
 		ctx.fill();  
-
+		
 		canvas.classList.add("object")
 		canvas.style.position = "absolute";
 		canvas.style.left = `${position.x}px`;
 		canvas.style.top = `${position.y}px`;
 		canvas.style.transform = `rotate(${rotation}deg)`;
-
+		
 		body.appendChild(canvas);
 		return;
 	} else if (object.type === "Polygon") {
 		const body = document.body;
 		const canvas = document.createElement("canvas");
-
+		
 		canvas.width = object.size.x
 		canvas.height = object.size.y
-
+		
 		body.appendChild(canvas); 
 		const ctx = canvas.getContext("2d");
 		ctx.fillStyle = "red";
-
+		
 		ctx.fillStyle = backgroundColor;
 		ctx.beginPath();
 		object.points.forEach(point => {
@@ -439,18 +438,18 @@ function Draw(object) {
 		});
 		ctx.closePath();
 		ctx.fill();  
-
-
+		
+		
 		canvas.classList.add("object")
 		canvas.style.position = "absolute";
 		canvas.style.left = `${position.x}px`;
 		canvas.style.top = `${position.y}px`;
 		canvas.style.transform = `rotate(${rotation}deg)`;
-
+		
 		body.appendChild(canvas);
 		return;
 	}
-
+	
 	Object.assign(drawn.style, {
 		position: "absolute",
 		left: `${position.x}px`,
@@ -458,17 +457,17 @@ function Draw(object) {
 		transform: `rotate(${rotation}deg)`,
 		transformOrigin: "center center"
 	});
-
+	
 	drawn.classList.add("object");
 	body.appendChild(drawn);
 }
 
 function Fill(fillColor = new colorRGBA()) {
 	let body = document.body;
-
+	
 	let objects = document.querySelectorAll(".object");
 	objects.forEach(obj => obj.remove());
-
+	
 	body.style.backgroundColor = `rgba(${fillColor.R}, ${fillColor.G}, ${fillColor.B}, ${fillColor.A})`;
 }
 
