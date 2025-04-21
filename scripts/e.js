@@ -250,6 +250,10 @@ class Rect {
 		this.width = width;
 		this.height = height;
 	}
+
+	contains(rect) {
+		return (rect.left > this.left && rect.right < this.right) && (rect.top > this.top && rect.bottom < this.bottom);
+	}
 	
 	*[Symbol.iterator]() {
 		yield this.left;
