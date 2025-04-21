@@ -57,11 +57,26 @@ class colorRGBA {
 }
 
 class Rect {
-	constructor(position = new Vector2(), size = new Vector2(40, 40), fillColor = new colorRGBA(), rotation = 0) {
-		this.position = position;
-		this.size = size
-		this.fillColor = fillColor;
-		this.rotation = rotation;
+	constructor(...args) {
+		if (args.length === 4) {
+            this.left = args[0];
+            this.top = args[1];
+            this.width = args[2];
+            this.height = args[3];
+        } else if (args.length === 2 && Array.isArray(args[0]) && Array.isArray(args[1])) {
+            this.left = args[0][0];
+            this.top = args[0][1];
+            this.width = args[1][0];
+            this.height = args[1][1];
+        } else if (args.length === 1 && typeof args[0] === 'object') {
+            const obj = args[0];
+            this.left = obj.left ?? obj.x ?? 0;
+            this.top = obj.top ?? obj.y ?? 0;
+            this.width = obj.width ?? 0;
+            this.height = obj.height ?? 0;
+        } else {
+            throw new Error('Invalid arguments for Rect');
+        }
 		this.type = "Rect";
 		this.dataType = "DrawableObject";
 	}
