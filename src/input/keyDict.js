@@ -1,4 +1,4 @@
-export const keyDictionary = {
+export let keyDictionary = {
 	"Backspace": false,
 	"Tab": false,
 	"Enter": false,
