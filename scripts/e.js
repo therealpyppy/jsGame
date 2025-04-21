@@ -254,6 +254,10 @@ class Rect {
 	contains(rect) {
 		return (rect.left > this.left && rect.right < this.right) && (rect.top > this.top && rect.bottom < this.bottom);
 	}
+
+	collidePoint(x, y) {
+		return (x > this.left && x < this.right) && (y > this.top && y < this.bottom);
+	}
 	
 	*[Symbol.iterator]() {
 		yield this.left;
