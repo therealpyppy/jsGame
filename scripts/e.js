@@ -77,6 +77,8 @@ class Rect {
         } else {
             throw new Error('Invalid arguments for Rect');
         }
+		this.right = this.left + this.width;
+		this.bottom = this.top + this.height;
 		this.type = "Rect";
 		this.dataType = "DrawableObject";
 	}
