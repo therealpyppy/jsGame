@@ -196,6 +196,33 @@ class Rect {
 		
 		return new Rect(left, top, width, height);
 	}
+
+	union(rect) {
+		const left = Math.min(this.left, rect.left);
+		const top = Math.min(this.top, rect.top);
+		const right = Math.max(this.right, rect.right);
+		const bottom = Math.max(this.bottom, rect.bottom);
+		
+		const width = right - left;
+		const height = bottom - top;
+
+		return new Rect(left, top, width, height);
+	}
+
+	union_ip(rect) {
+		const left = Math.min(this.left, rect.left);
+		const top = Math.min(this.top, rect.top);
+		const right = Math.max(this.right, rect.right);
+		const bottom = Math.max(this.bottom, rect.bottom);
+		
+		const width = right - left;
+		const height = bottom - top;
+		
+		this.left = left;
+		this.top = top;
+		this.width = width;
+		this.height = height;
+	}
 	
 	*[Symbol.iterator]() {
 		yield this.left;
