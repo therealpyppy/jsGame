@@ -85,6 +85,19 @@ class Rect {
 		return new Rect((this.left, this.top), (this.width, this.height));
 	}
 
+	
+	move(x, y) {
+		let newRect = this.copy();
+		newRect.left += x;
+		newRect.top += y;
+		return newRect;
+	}
+
+	move_ip(x, y) {
+		this.left += x;
+		this.top += y;
+	}
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
