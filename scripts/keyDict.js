@@ -1,4 +1,4 @@
-const keyDictionary = {
+export const keyDictionary = {
 	"Backspace": false,
 	"Tab": false,
 	"Enter": false,
@@ -89,5 +89,3 @@ const keyDictionary = {
 	"NumpadDivide": false,
 	"NumpadEqual": false
 };
-
-export default keyDictionary
