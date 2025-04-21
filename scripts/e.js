@@ -224,16 +224,31 @@ class Rect {
 		this.height = height;
 	}
 
-	union(rect) {
-		const left = Math.min(this.left, rect.left);
-		const top = Math.min(this.top, rect.top);
-		const right = Math.max(this.right, rect.right);
-		const bottom = Math.max(this.bottom, rect.bottom);
+	unionAll(rectSequence) {
+		const left = Math.min(this.left, ...rectSequence.map(r => r.left));
+		const top = Math.min(this.top, ...rectSequence.map(r => r.top));
+		const right = Math.max(this.right, ...rectSequence.map(r => r.right));
+		const bottom = Math.max(this.bottom, ...rectSequence.map(r => r.bottom));
 		
 		const width = right - left;
 		const height = bottom - top;
 
 		return new Rect(left, top, width, height);
+	}
+
+	unionAllInPlace(rectSequence) {
+		const left = Math.min(this.left, ...rectSequence.map(r => r.left));
+		const top = Math.min(this.top, ...rectSequence.map(r => r.top));
+		const right = Math.max(this.right, ...rectSequence.map(r => r.right));
+		const bottom = Math.max(this.bottom, ...rectSequence.map(r => r.bottom));
+		
+		const width = right - left;
+		const height = bottom - top;
+
+		this.left = left;
+		this.top = top;
+		this.width = width;
+		this.height = height;
 	}
 	
 	*[Symbol.iterator]() {
