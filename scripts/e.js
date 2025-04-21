@@ -174,6 +174,22 @@ class Rect {
 		}
 	}
 
+    clip(rect) {
+        const left = Math.max(this.left, rect.left);
+        const top = Math.max(this.top, rect.top);
+        const right = Math.min(this.left + this.width, rect.left + rect.width);
+        const bottom = Math.min(this.top + this.height, rect.top + rect.height);
+
+        const width = right - left;
+        const height = bottom - top;
+
+        if (width <= 0 || height <= 0) {
+            return new Rect(0, 0, 0, 0);
+        }
+
+        return new Rect(left, top, width, height);
+    }
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
