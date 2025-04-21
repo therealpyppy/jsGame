@@ -145,7 +145,7 @@ class Rect {
 	}
 
 	clamp(rect) {
-		let newRect = this.copy;
+		let newRect = this.copy();
 		if (newRect.width > rect.width) {
 			newRect.left = rect.left+(rect.width/2);
 		} else {
