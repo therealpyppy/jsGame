@@ -1,16 +1,18 @@
+import createKeyDict from './keyDict.js';
+
 export class Key {
 	constructor() {
+		this.keys = createKeyDict();
 		this.type = "key";
 		this.dataType = "key";
-		this.pressedKeys = keyDictionary;
 		this.focused = true;
 		
 		document.addEventListener("keydown", (event) => {
-			this.pressedKeys[event.key] = true;
+			this.keys[event.key] = true;
 		});
 		
 		document.addEventListener("keyup", (event) => {
-			this.pressedKeys[event.key] = false;
+			this.keys[event.key] = false;
 		});
 		
 		window.addEventListener("focus", () => {
@@ -23,7 +25,7 @@ export class Key {
 	}
 	
 	getPressed() {
-		return this.pressedKeys;
+		return this.keys;
 	}
 	
 	getFocused() {
