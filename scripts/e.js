@@ -12,39 +12,6 @@ class Vector2 {
 	}
 }
 
-class Key {
-	constructor() {
-		this.type = "key";
-		this.dataType = "key";
-		this.pressedKeys = keyDictionary;
-		this.focused = true;
-		
-		document.addEventListener("keydown", (event) => {
-			this.pressedKeys[event.key] = true;
-		});
-		
-		document.addEventListener("keyup", (event) => {
-			this.pressedKeys[event.key] = false;
-		});
-		
-		window.addEventListener("focus", () => {
-			this.focused = true;
-		});
-		
-		window.addEventListener("blur", () => {
-			this.focused = false;
-		});
-	}
-	
-	get_pressed() {
-		return this.pressedKeys;
-	}
-	
-	get_focused() {
-		return this.focused;
-	}
-}
-
 class colorRGBA {
 	constructor(R = 255, G = 255, B = 255, Transparency = 1) {
 		this.R = R;
