@@ -81,6 +81,10 @@ class Rect {
 		this.dataType = "DrawableObject";
 	}
 
+	copy() {
+		return new Rect((this.left, this.top), (this.width, this.height));
+	}
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
