@@ -98,6 +98,18 @@ class Rect {
 		this.top += y;
 	}
 
+	inflate(x, y) {
+		let newRect = this.copy();
+		newRect.width += x;
+		newRect.height += y;
+		return newRect;
+	}
+
+	inflate_ip(x, y) {
+		this.width += x;
+		this.height += y;
+	}
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
