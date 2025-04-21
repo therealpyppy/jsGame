@@ -144,6 +144,36 @@ class Rect {
         }
 	}
 
+	clamp(rect) {
+		let newRect = this.copy;
+		if (newRect.width > rect.width) {
+			newRect.left = rect.left+(rect.width/2);
+		} else {
+			newRect.left = rect.left;
+		}
+
+		if (newRect.height > rect.height) {
+			newRect.top = rect.top+(rect.height/2)
+		} else {
+			newRect.top = rect.top;
+		}
+		return newRect;
+	}
+
+	clamp_ip(rect) {
+		if (this.width > rect.width) {
+			this.left = rect.left+(rect.width/2);
+		} else {
+			this.left = rect.left;
+		}
+
+		if (this.height > rect.height) {
+			this.top = rect.top+(rect.height/2)
+		} else {
+			this.top = rect.top;
+		}
+	}
+
 	*[Symbol.iterator]() {
 		yield this.left;
 		yield this.top;
