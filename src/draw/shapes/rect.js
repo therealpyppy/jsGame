@@ -1,4 +1,4 @@
-export function drawRect(ctx, x, y, width, height, color) {
+export function drawRect(ctx, left, top, width, height, color) {
 	ctx.fillStyle = color;
-	ctx.fillRect(x, y, width, height);
+	ctx.fillRect(left, top, width, height);
 }
