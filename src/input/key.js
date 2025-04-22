@@ -8,11 +8,11 @@ export class Key {
 		this.focused = true;
 		
 		document.addEventListener("keydown", (event) => {
-			this.keys[event.key] = true;
+			this.keys[event.code] = true;
 		});
 		
 		document.addEventListener("keyup", (event) => {
-			this.keys[event.key] = false;
+			this.keys[event.code] = false;
 		});
 		
 		window.addEventListener("focus", () => {
