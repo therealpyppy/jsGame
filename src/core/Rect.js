@@ -1,4 +1,4 @@
-export class Rect {
+export class rect {
 	constructor(...args) {
 		if (args.length === 4) {
 			this.left = args[0];
