@@ -1,5 +1,5 @@
-import { rect } from "./rect.js";
+import { Rect } from "./rect.js";
 
 export const core = {
-	rect,
+	Rect,
 };
