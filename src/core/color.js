@@ -30,7 +30,7 @@ export class Color {
 					b = parseInt(hex[2] + hex[2], 16);
 					break;
 				default:
-					throw new Error("Unknown color format. Use (R,G,B), \"HEX\", or 3-digit \"HEX\".");
+					throw new Error("Unknown color format. Use [R,G,B], \"HEX\", or 3-digit \"HEX\".");
 			}
 		
 		} else if (args.length === 3) {
