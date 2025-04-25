@@ -12,6 +12,8 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 
 	let x = center[0];
 	let y = center[1];
+	let top = y - radius;
+	let left = x - radius;
 
 	ctx.lineWidth = width;
 
@@ -23,5 +25,5 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 		ctx.stroke();
 	}
 
-	return new core.Rect(center);
+	return new core.Rect([top, left], [radius*2, radius*2]);
 }
