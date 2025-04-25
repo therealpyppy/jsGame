@@ -15,6 +15,10 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 	let top = y - radius;
 	let left = x - radius;
 
+	if (width < 0 || radius < 0) {
+		return new core.Rect([x, y], [0, 0]);
+	}
+
 	ctx.lineWidth = width;
 
 	if (draw_top_right, draw_top_left, draw_bottom_left, draw_bottom_right) {
