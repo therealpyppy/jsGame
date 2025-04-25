@@ -6,6 +6,10 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 	if (!Array.isArray(center) || center.length !== 2) {
 		throw new Error("center must be an array of two numbers [x, y]");
 	}
+	if (!typeof(radius) == 'number' || !(radius % 1 == 0)) {
+		throw new Error("radius must be an integer");
+	}
+
 	let x = center[0];
 	let y = center[1];
 
