@@ -69,5 +69,5 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 		ctx.stroke();
 	}
 
-	return new core.Rect([top, left], [radius*2, radius*2]);
+	return new core.Rect([left, top], [radius*2, radius*2]);
 }
