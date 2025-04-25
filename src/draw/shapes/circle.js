@@ -25,21 +25,37 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 		if (draw_top_right) {
 			ctx.beginPath();
 			ctx.arc(x, y, radius, Math.PI*1.5, 0);
+			if (width === 0) {
+				ctx.lineTo(x, y)
+				ctx.fill();
+			}
 			ctx.stroke();
 		}
 		if (draw_top_left) {
 			ctx.beginPath();
 			ctx.arc(x, y, radius, Math.PI, Math.PI*1.5);
+			if (width === 0) {
+				ctx.lineTo(x, y)
+				ctx.fill();
+			}
 			ctx.stroke();
 		}
 		if (draw_bottom_left) {
 			ctx.beginPath();
 			ctx.arc(x, y, radius, Math.PI/2, Math.PI);
+			if (width === 0) {
+				ctx.lineTo(x, y)
+				ctx.fill();
+			}
 			ctx.stroke();
 		}
 		if (draw_bottom_right) {
 			ctx.beginPath();
 			ctx.arc(x, y, radius, 0, Math.PI/2);
+			if (width === 0) {
+				ctx.lineTo(x, y)
+				ctx.fill();
+			}
 			ctx.stroke();
 		}
 	} else {
