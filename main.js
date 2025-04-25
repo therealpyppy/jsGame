@@ -2,4 +2,4 @@ import { jsgame } from "./src/jsgame.js"
 
 const surface = document.getElementById("canvas").getContext('2d')
 
-jsgame.draw.circle(surface, "#FF0000", [50, 50], 20)
+jsgame.draw.circle(surface, "#FF0000", [50, 50], 50, 0, true, true, true, true)
