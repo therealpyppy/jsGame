@@ -26,6 +26,11 @@ export function circle(ctx, color, center, radius, width=0, draw_top_right=false
 	} else {
 		ctx.beginPath();
 		ctx.arc(x, y, radius, 0, 2 * Math.PI);
+
+		if (width === 0) {
+			ctx.fill();
+		}
+
 		ctx.stroke();
 	}
 
