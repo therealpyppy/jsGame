@@ -5,7 +5,7 @@ export function lines(ctx, color, closed, points, width=1) {
 		throw new Error("\"points\" must be an array of integer arrays")
 	}
 
-	if (width < 1) {
+	if (width < 1 || points.length === 0) {
 		return new core.Rect(Math.min(x1, x2), Math.min(y1, y2), , );
 	}
 
