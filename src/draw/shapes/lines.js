@@ -9,8 +9,8 @@ export function lines(ctx, color, closed, points, width=1) {
 		throw new Error("\"points\" must contain 2 or more points");
 	}
 	
-	let xs = map(points, p => p[0]);
-	let ys = map(points, p => p[0]);
+	let xs = points.map(p => p[0]);
+	let ys = points.map(p => p[1]);
 	
 	let left = Math.min(...xs);
 	let top = Math.min(...ys);
