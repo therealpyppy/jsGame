@@ -29,7 +29,10 @@ export function lines(ctx, color, closed, points, width=1) {
 	ctx.strokeStyle = new core.Color(color).hex3;
 
 	ctx.beginPath();
-	ctx.moveTo(x1, y1);
-	ctx.lineTo(x2, y2);
+	
+	points.forEach(point => {
+		ctx.lineTo(point[0], point[1])
+	});
+
 	ctx.stroke();
 }
