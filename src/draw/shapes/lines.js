@@ -5,8 +5,14 @@ export function lines(ctx, color, closed, points, width=1) {
 		throw new Error("\"points\" must be an array of integer arrays")
 	}
 
-	if (width < 1 || points.length === 0) {
+	if (points.length < 2) {
+		throw new Error("points argument must contain 2 or more points")
+	}
+
+	if (width < 1) {
 		return new core.Rect(Math.min(x1, x2), Math.min(y1, y2), , );
+	} else if (points.length === 0) {
+		return new core.Rect([0, 0], [0, 0]);
 	}
 
 	ctx.lineWidth = width;
