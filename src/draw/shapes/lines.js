@@ -6,7 +6,7 @@ export function lines(ctx, color, closed, points, width=1) {
 	}
 
 	if (points.length < 2) {
-		throw new Error("points argument must contain 2 or more points");
+		throw new Error("\"points\" must contain 2 or more points");
 	}
 
 	if (width < 1) {
