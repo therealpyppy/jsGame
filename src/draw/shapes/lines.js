@@ -33,6 +33,10 @@ export function lines(ctx, color, closed, points, width=1) {
 	points.forEach(point => {
 		ctx.lineTo(point[0], point[1]);
 	});
+
+	if (closed) {
+		ctx.closePath();
+	}
 	
 	ctx.stroke();
 	
