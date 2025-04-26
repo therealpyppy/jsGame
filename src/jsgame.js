@@ -8,7 +8,7 @@ class JSGAME {
 		this.core = core;
 		this.draw = draw;
 	}
-	
+
 	init() {
 		document.body.style.margin = "0px";
 		let canvas = document.querySelector("canvas");
@@ -21,14 +21,16 @@ class JSGAME {
 		this.initialized = true;
 		return canvas.getContext('2d');
 	}
-	
-	quit() {
+
+	quit(close) {
 		this.quitCallbacks.forEach(callback => {
-			callback()
+			callback();
 		});
-		window.close();
+		if (close) {
+			window.close();
+		}
 	}
-	
+
 	getInit() {
 		return this.initialized;
 	}
