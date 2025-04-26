@@ -34,9 +34,7 @@ export function polygon(ctx, color, points, width=0) {
 		ctx.lineTo(point[0], point[1]);
 	});
 
-	if (closed) {
-		ctx.closePath();
-	}
+	ctx.closePath();
 	
 	ctx.stroke();
 	
