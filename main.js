@@ -1,5 +1,16 @@
 import { jsgame } from "./src/jsgame.js"
 
-const surface = document.getElementById("canvas").getContext('2d')
+const canvas = document.getElementById("canvas")
 
-jsgame.draw.circle(surface, "#FF0000", [50, 50], 50, 0, true, true, true, true)
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+const surface = canvas.getContext('2d')
+
+let points = [
+	[25, 20],
+	[80, 26],
+	[180, 80],
+]
+
+jsgame.draw.lines(surface, "#FF0000", true, points, 1)
