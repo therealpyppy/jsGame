@@ -29,10 +29,8 @@ export function polygon(ctx, color, points, width=0) {
 	ctx.strokeStyle = new core.Color(color).hex3;
 	
 	ctx.beginPath();
-	
-	points.forEach(point => {
-		ctx.lineTo(point[0], point[1]);
-	});
+
+	points.map(p => ctx.lineTo(p[0], p[1]))
 
 	ctx.closePath();
 

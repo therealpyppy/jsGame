@@ -30,9 +30,7 @@ export function lines(ctx, color, closed, points, width=1) {
 	
 	ctx.beginPath();
 	
-	points.forEach(point => {
-		ctx.lineTo(point[0], point[1]);
-	});
+	points.map(p => ctx.lineTo(p[0], p[1]))
 
 	if (closed) {
 		ctx.closePath();
