@@ -31,8 +31,10 @@ export function lines(ctx, color, closed, points, width=1) {
 	ctx.beginPath();
 	
 	points.forEach(point => {
-		ctx.lineTo(point[0], point[1])
+		ctx.lineTo(point[0], point[1]);
 	});
 
 	ctx.stroke();
+
+	return new core.Rect([left, top], [rWidth, rHeight]);
 }
