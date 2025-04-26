@@ -20,7 +20,7 @@ export function polygon(ctx, color, points, width=0) {
 	let rWidth = right-left;
 	let rHeight = bottom-top;
 	
-	if (width < 1) {
+	if (width < 0) {
 		return new core.Rect([left, top], [rWidth, rHeight]);
 	}
 	
@@ -35,6 +35,10 @@ export function polygon(ctx, color, points, width=0) {
 	});
 
 	ctx.closePath();
+
+	if (width === 0) {
+		ctx.fill()
+	}
 	
 	ctx.stroke();
 	
