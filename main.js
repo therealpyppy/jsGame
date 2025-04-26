@@ -14,3 +14,5 @@ let points = [
 ]
 
 jsgame.draw.lines(surface, "#FF0000", true, points, 1)
+
+jsgame.draw.ellipse(surface, "#FF0000", new jsgame.core.Rect([325, 80], [120, 60]), 0)
