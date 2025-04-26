@@ -9,18 +9,18 @@ export function lines(ctx, color, closed, points, width=1) {
 		throw new Error("\"points\" must contain 2 or more points");
 	}
 
+	let xs = map(points, p => p[0]);
+	let ys = map(points, p => p[0]);
+	
+	let left = Math.min(...xs);
+	let top = Math.min(...ys);
+	let right = Math.max(...xs);
+	let bottom = Math.max(...ys);
+
+	let rWidth = right-left;
+	let rHeight = bottom-top;
+
 	if (width < 1) {
-		let xs = map(points, p => p[0]);
-		let ys = map(points, p => p[0]);
-		
-		let left = Math.min(...xs);
-		let top = Math.min(...ys);
-		let right = Math.max(...xs);
-		let bottom = Math.max(...ys);
-
-		let rWidth = right-left;
-		let rHeight = bottom-top;
-
 		return new core.Rect([left, top], [rWidth, rHeight]);
 	}
 
