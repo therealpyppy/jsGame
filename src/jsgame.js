@@ -22,6 +22,10 @@ class JSGAME {
 		}
 		this.initialized = true
 	}
+
+	quit() {
+		window.close()
+	}
 };
 
 export const jsgame = new JSGAME()
