@@ -3,8 +3,16 @@
 A JavaScript library inspired by Pygame.  
 This project recreates common Pygame functions for drawing and input handling.
 
-## Implemented Functions
+## Table of contents
 
+0. [Description](#jsgame)
+1. [Table of contents](#table-of-contents)
+2. [Emoji key](#legend)
+3. [Top level pygame packages (pygame.*)](#top-level-pygame-packages-pygame)
+4. [Draw (pygame.draw)](#pygamedraw)
+
+## Implemented Functions
+### Legend
 ✅ - Implemented<br>
 🟧 - Working on it<br>
 🔳 - Unimplemented<br>
