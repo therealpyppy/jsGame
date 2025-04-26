@@ -4,7 +4,7 @@ import { draw } from "./draw/draw.js";
 class JSGAME {
 	constructor() {
 		this.initialized = false;
-		
+		this.quitCallbacks = [];
 		this.core = core;
 		this.draw = draw;
 	}
@@ -24,11 +24,21 @@ class JSGAME {
 	}
 	
 	quit() {
+		this.quitCallbacks.forEach(callback => {
+			callback()
+		});
 		window.close();
 	}
 	
 	getInit() {
 		return this.initialized;
+	}
+
+	registerQuit(callback) {
+		if (!typeof(callback) === "function") {
+			throw new Error("\"callback\" argument must be a function")
+		}
+		this.quitCallbacks.push(callback)
 	}
 };
 
