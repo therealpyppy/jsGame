@@ -5,8 +5,8 @@ export function polygon(ctx, color, points, width=0) {
 		throw new Error("\"points\" must be an array of integer arrays");
 	}
 	
-	if (points.length < 2) {
-		throw new Error("\"points\" must contain 2 or more points");
+	if (points.length < 3) {
+		throw new Error("\"points\" must contain 3 or more points");
 	}
 	
 	let xs = points.map(p => p[0]);
