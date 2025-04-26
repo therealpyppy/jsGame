@@ -1,8 +1,10 @@
 import { core } from "./core/core.js";
 import { draw } from "./draw/draw.js";
 
-export class jsgame {
+class JSGAME {
 	constructor() {
+		this.initialized = false
+
 		this.core = core
 		this.draw = draw
 	}
@@ -18,5 +20,8 @@ export class jsgame {
 
 			return canvas.getContext('2d');
 		}
+		this.initialized = true
 	}
 };
+
+export const jsgame = new JSGAME()
