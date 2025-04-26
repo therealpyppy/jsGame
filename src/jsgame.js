@@ -13,14 +13,13 @@ class JSGAME {
 		document.body.style.margin = "0px";
 		let canvas = document.querySelector("canvas");
 		if (canvas === null) {
-			let canvas = document.body.appendChild(document.createElement("canvas"));
-			canvas.id = "screen";
-			canvas.width = window.innerWidth;
-			canvas.height = window.innerHeight;
-			
-			return canvas.getContext('2d');
+			canvas = document.body.appendChild(document.createElement("canvas"));
 		}
+		canvas.id = "screen";
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 		this.initialized = true;
+		return canvas.getContext('2d');
 	}
 	
 	quit() {
