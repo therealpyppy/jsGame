@@ -6,7 +6,12 @@ export const jsgame = {
 		document.body.style.margin = "0px";
 		let canvas = document.querySelector("canvas");
 		if (canvas === null) {
-			document.body.appendChild(document.createElement("canvas"));
+			let canvas = document.body.appendChild(document.createElement("canvas"));
+			canvas.id = "screen"
+			canvas.width = window.innerWidth;
+			canvas.height = window.innerHeight;
+
+			return canvas.getContext('2d');
 		}
 	},
 
