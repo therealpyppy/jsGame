@@ -7,7 +7,7 @@ This project recreates common Pygame functions for drawing and input handling.
 
 0. [Description](#jsgame)
 1. [Table of contents](#table-of-contents)
-2. [Emoji key](#legend)
+2. [Emoji legend](#legend)
 3. [Top level pygame packages (pygame.*)](#top-level-pygame-packages-pygame)
 4. [Draw (pygame.draw)](#pygamedraw)
 
