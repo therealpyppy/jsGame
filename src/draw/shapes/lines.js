@@ -21,7 +21,8 @@ export function lines(ctx, color, closed, points, width=1) {
 	let rHeight = bottom-top;
 	
 	if (width < 1) {
-		return new core.Rect([left, top], [rWidth, rHeight]);
+		let p1 = points[0]
+		return new core.Rect([p1[0], p1[1]], [0, 0]);
 	}
 	
 	ctx.lineWidth = width;

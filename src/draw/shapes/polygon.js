@@ -21,7 +21,8 @@ export function polygon(ctx, color, points, width=0) {
 	let rHeight = bottom-top;
 	
 	if (width < 0) {
-		return new core.Rect([left, top], [rWidth, rHeight]);
+		let p1 = points[0]
+		return new core.Rect([p1[0], p1[1]], [0, 0]);
 	}
 	
 	ctx.lineWidth = width;
