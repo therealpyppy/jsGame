@@ -342,3 +342,21 @@ set the mouse cursor to a new cursor
 🔳 - mouse.get_cursor
 get the current mouse cursor
 ```
+
+### pygame.time
+```
+🔳 - time.get_ticks
+get the time in milliseconds
+
+🔳 - time.wait
+pause the program for an amount of time
+
+🔳 - time.delay
+pause the program for an amount of time
+
+🔳 - time.set_timer
+repeatedly create an event on the event queue
+
+🔳 - time.Clock
+create an object to help track time
+```
