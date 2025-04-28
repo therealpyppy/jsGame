@@ -83,3 +83,29 @@ Draws a straight antialiased line
 ❌ - draw.aalines
 Draws multiple contiguous straight antialiased line segments
 ```
+
+### pygame.key
+```
+🔳 - key.get_focused
+
+🔳 - key.get_pressed
+
+🔳 - key.get_mods
+
+🔳 - key.set_mods
+
+🔳 - key.set_repeat
+
+🔳 - key.get_repeat
+
+🔳 - key.name
+
+🔳 - key.key_code
+
+❌ - key.start_text_input
+
+❌ - key.stop_text_input
+
+❌ - key.set_text_input_rect
+
+```
