@@ -17,6 +17,7 @@ This project recreates common Pygame functions for drawing and input handling.
 🟧 - Working on it<br>
 🔳 - Unimplemented<br>
 ❌ - Won't be implemented<br>
+🔳/❌ - Undecided<br>
 
 ### top level pygame packages (pygame.*)
 ```
@@ -87,25 +88,35 @@ Draws multiple contiguous straight antialiased line segments
 ### pygame.key
 ```
 🔳 - key.get_focused
+true if the display is receiving keyboard input from the system
 
 🔳 - key.get_pressed
+get the state of all keyboard buttons
 
 🔳 - key.get_mods
+determine which modifier keys are being held
 
 🔳 - key.set_mods
+temporarily set which modifier keys are pressed
 
 🔳 - key.set_repeat
+control how held keys are repeated
 
 🔳 - key.get_repeat
+see how held keys are repeated
 
 🔳 - key.name
+get the name of a key identifier
 
 🔳 - key.key_code
+get the key identifier from a key name
 
-❌ - key.start_text_input
+🔳/❌ - key.start_text_input
+start handling Unicode text input events
 
-❌ - key.stop_text_input
+🔳/❌ - key.stop_text_input
+stop handling Unicode text input events
 
-❌ - key.set_text_input_rect
-
+🔳/❌ - key.set_text_input_rect
+controls the position of the candidate list
 ```
