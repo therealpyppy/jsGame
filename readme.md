@@ -174,3 +174,90 @@ make custom user event type
 🔳 - event.Event
 pygame object for representing events
 ```
+
+### pygame.display
+```
+🔳 - display.init
+Initialize the display module
+
+🔳 - display.quit
+Uninitialize the display module
+
+🔳 - display.get_init
+Returns True if the display module has been initialized
+
+❌ - display.set_mode
+Initialize a window or screen for display
+
+🔳 - display.get_surface
+Get a reference to the currently set display surface
+
+❌ - display.flip
+Update the full display Surface to the screen
+
+❌ - display.update
+Update portions of the screen for software displays
+
+❌ - display.get_driver
+Get the name of the pygame display backend
+
+❌ - display.Info
+Create a video display information object
+
+❌ - display.get_wm_info
+Get information about the current windowing system
+
+🔳 - display.get_desktop_sizes
+Get sizes of active desktops
+
+❌ - display.list_modes
+Get list of available fullscreen modes
+
+❌ - display.mode_ok
+Pick the best color depth for a display mode
+
+❌ - display.gl_get_attribute
+Get the value for an OpenGL flag for the current display
+
+❌ - display.gl_set_attribute
+Request an OpenGL display attribute for the display mode
+
+🔳 - display.get_active
+Returns True when the display is active on the screen
+
+❌ - display.iconify
+Iconify the display surface
+
+🔳 - display.toggle_fullscreen
+Switch between fullscreen and windowed displays
+
+❌ - display.set_gamma
+Change the hardware gamma ramps
+
+❌ - display.set_gamma_ramp
+Change the hardware gamma ramps with a custom lookup
+
+🔳 - display.set_icon
+Change the system image for the display window
+
+🔳 - display.set_caption
+Set the current window caption
+
+🔳 - display.get_caption
+Get the current window caption
+
+❌ - display.set_palette
+Set the display color palette for indexed displays
+
+🔳 - display.get_num_displays
+Return the number of displays
+
+🔳 - display.get_window_size
+Return the size of the window or screen
+
+❌ - display.get_allow_screensaver
+Return whether the screensaver is allowed to run.
+
+❌ - display.set_allow_screensaver
+Set whether the screensaver may run
+```
