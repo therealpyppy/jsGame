@@ -120,3 +120,57 @@ stop handling Unicode text input events
 🔳/❌ - key.set_text_input_rect
 controls the position of the candidate list
 ```
+
+### pygame.event
+```
+🔳/❌ - event.pump
+internally process pygame event handlers
+
+🔳 - event.get
+get events from the queue
+
+🔳 - event.poll
+get a single event from the queue
+
+🔳 - event.wait
+wait for a single event from the queue
+
+🔳 - event.peek
+test if event types are waiting on the queue
+
+🔳 - event.clear
+remove all events from the queue
+
+🔳 - event.event_name
+get the string name from an event id
+
+🔳 - event.set_blocked
+control which events are allowed on the queue
+
+🔳 - event.set_allowed
+control which events are allowed on the queue
+
+🔳 - event.get_blocked
+test if a type of event is blocked from the queue
+
+🔳 - event.set_grab
+control the sharing of input devices with other applications
+
+🔳 - event.get_grab
+test if the program is sharing input devices
+
+🔳/❌ - event.set_keyboard_grab
+grab enables capture of system keyboard shortcuts like Alt+Tab or the Meta/Super key.
+
+🔳/❌ - event.get_keyboard_grab
+get the current keyboard grab state
+
+🔳 - event.post
+place a new event on the queue
+
+🔳 - event.custom_type
+make custom user event type
+
+🔳 - event.Event
+pygame object for representing events
+```
