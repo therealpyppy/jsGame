@@ -359,4 +359,19 @@ repeatedly create an event on the event queue
 
 🔳 - time.Clock
 create an object to help track time
+
+	🔳 - Clock.tick
+	update the clock
+
+	🔳 - Clock.tick_busy_loop
+	update the clock
+
+	🔳 - Clock.get_time
+	time used in the previous tick
+
+	🔳 - Clock.get_rawtime
+	actual time used in the previous tick
+
+	🔳 - Clock.get_fps
+	compute the clock framerate
 ```
