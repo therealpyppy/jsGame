@@ -261,3 +261,54 @@ Return whether the screensaver is allowed to run.
 ❌ - display.set_allow_screensaver
 Set whether the screensaver may run
 ```
+
+### pygame.mixer
+```
+🔳 - mixer.init
+initialize the mixer module
+
+❌ - mixer.pre_init
+preset the mixer init arguments
+
+🔳 - mixer.quit
+uninitialize the mixer
+
+🔳 - mixer.get_init
+test if the mixer is initialized
+
+🔳 - mixer.stop
+stop playback of all sound channels
+
+🔳 - mixer.pause
+temporarily stop playback of all sound channels
+
+🔳 - mixer.unpause
+resume paused playback of sound channels
+
+🔳 - mixer.fadeout
+fade out the volume on all sounds before stopping
+
+🔳 - mixer.set_num_channels
+set the total number of playback channels
+
+🔳 - mixer.get_num_channels
+get the total number of playback channels
+
+🔳 - mixer.set_reserved
+reserve channels from being automatically used
+
+🔳 - mixer.find_channel
+find an unused channel
+
+🔳 - mixer.get_busy
+test if any sound is being mixed
+
+🔳/❌ - mixer.get_sdl_mixer_version
+get the mixer's SDL version
+
+🔳 - mixer.Sound
+Create a new Sound object from a file or buffer object
+
+🔳 - mixer.Channel
+Create a Channel object for controlling playback
+```
