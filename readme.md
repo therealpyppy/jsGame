@@ -312,3 +312,33 @@ Create a new Sound object from a file or buffer object
 🔳 - mixer.Channel
 Create a Channel object for controlling playback
 ```
+
+### pygame.mouse
+```
+🔳 - mouse.get_pressed
+get the state of the mouse buttons
+
+🔳 - mouse.get_pos
+get the mouse cursor position
+
+🔳 - mouse.get_rel
+get the amount of mouse movement
+
+❌ - mouse.set_pos
+set the mouse cursor position
+
+🔳 - mouse.set_visible
+hide or show the mouse cursor
+
+🔳 - mouse.get_visible
+get the current visibility state of the mouse cursor
+
+🔳 - mouse.get_focused
+check if the display is receiving mouse input
+
+🔳 - mouse.set_cursor
+set the mouse cursor to a new cursor
+
+🔳 - mouse.get_cursor
+get the current mouse cursor
+```
