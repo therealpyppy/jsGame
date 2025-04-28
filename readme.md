@@ -10,6 +10,12 @@ This project recreates common Pygame functions for drawing and input handling.
 2. [Emoji legend](#legend)
 3. [Top level pygame packages (pygame.*)](#top-level-pygame-packages-pygame)
 4. [Draw (pygame.draw)](#pygamedraw)
+5. [Key (pygame.key)](#pygamekey)
+6. [Event (pygame.event)](#pygameevent)
+7. [Display (pygame.display)](#pygamedisplay)
+8. [Mixer (pygame.mixer)](#pygamemixer)
+8. [Mouse (pygame.mouse)](#pygamemouse)
+8. [Time (pygame.time)](#pygametime)
 
 ## Implemented Functions
 ### Legend
