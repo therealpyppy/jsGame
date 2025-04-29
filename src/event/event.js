@@ -20,6 +20,7 @@ window.addEventListener('keyup', addQueue(id));
 window.addEventListener('touchmove', addQueue(id));
 window.addEventListener('touchend', addQueue(id));
 
+window.addEventListener('beforeunload', addQueue(256));
 document.addEventListener('visibilitychange', (event) => {
 	visible = !visible
 	addQueue(visible ? 513 : 514);
