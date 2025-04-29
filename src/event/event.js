@@ -8,17 +8,19 @@ eventList = new eventList();
 
 visible = true;
 
-window.addEventListener('mousemove', addQueue(id));
-window.addEventListener('mousedown', addQueue(id));
-window.addEventListener('mouseup', addQueue(id));
-window.addEventListener('click', addQueue(id));
-window.addEventListener('dblclick', addQueue(id));
-window.addEventListener('wheel', addQueue(id));
+window.addEventListener('mousemove', addQueue(1024));
+window.addEventListener('mousedown', addQueue(1025));
+window.addEventListener('mouseup', addQueue(1026));
+//window.addEventListener('click', addQueue(1027));
+//window.addEventListener('dblclick', addQueue(id));
+window.addEventListener('wheel', addQueue(1076));
 
-window.addEventListener('keyup', addQueue(id));
+window.addEventListener('keydown', addQueue(798));
+window.addEventListener('keyup', addQueue(769));
 
-window.addEventListener('touchmove', addQueue(id));
-window.addEventListener('touchend', addQueue(id));
+window.addEventListener('touchstart', addQueue(1792));
+window.addEventListener('touchmove', addQueue(1794));
+window.addEventListener('touchend', addQueue(1793));
 
 window.addEventListener('beforeunload', addQueue(256));
 document.addEventListener('visibilitychange', (event) => {
@@ -28,9 +30,9 @@ document.addEventListener('visibilitychange', (event) => {
 window.addEventListener('blur', addQueue(1));
 window.addEventListener('focus', addQueue(1));
 
-window.addEventListener('dragstart', addQueue(id));
-window.addEventListener('dragend', addQueue(id));
-window.addEventListener('drop', addQueue(id));
+window.addEventListener('dragstart', addQueue(4098));
+window.addEventListener('dragend', addQueue(4099));
+window.addEventListener('drop', addQueue(4096));
 
 export const event = {
 	
