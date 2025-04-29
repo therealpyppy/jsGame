@@ -93,7 +93,7 @@ Draws multiple contiguous straight antialiased line segments
 
 ### pygame.key
 ```
-✅ - key.get_focused
+❌ - key.get_focused
 true if the display is receiving keyboard input from the system
 
 ✅ - key.get_pressed
