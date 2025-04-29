@@ -72,6 +72,11 @@ export class eventList {
 		}
 	}
 
+	getEventName(id) {
+		if (Object.values(this.nameList).includes(id)) {
+			return Object.keys(this.nameList).find(key => this.nameList[key] === id);
+		} else {
+			throw new Error("Unknown event id");
 		}
 	}
 }
