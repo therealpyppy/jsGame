@@ -64,10 +64,13 @@ export class eventList {
 		};
 	}
 
-	getEvent(nameOrId) {
-		if (typeof(nameOrId) == 'string' && parseInt(nameOrId) == NaN) {
-
-		} else if (typeof(nameOrId == 'int' || parseInt(nameOrId) != NaN)) {
+	getEventId(name) {
+		if (Object.keys(this.nameList).includes(name)) {
+			return this.nameList[name];
+		} else {
+			throw new Error("Unknown event name");
+		}
+	}
 
 		}
 	}
