@@ -17,7 +17,7 @@ export class Key {
 	}
 	
 	getPressed() {
-		return Object.values(this.keys);
+		return this.keys;
 	}
 
 	getMods() {
