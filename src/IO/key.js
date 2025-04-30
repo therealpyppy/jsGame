@@ -31,4 +31,12 @@ export class Key {
 	  
 		return mods;
 	}
+
+	name(keyCode) {
+		return Object.keys(maps.KeyMap).find(key => maps.KeyMap[key] === keyCode) || null;
+	}
+
+	keyCode(name) {
+		return maps.KeyMap[name] || null
+	}
 }
