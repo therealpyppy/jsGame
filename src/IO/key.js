@@ -17,7 +17,7 @@ export class Key {
 		});
 	}
 	
-	static get_mods() {
+	getMods() {
 		const mods = [];
 
 		Object.keys(maps.ModKeyMap).forEach(mod => {
