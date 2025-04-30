@@ -1,4 +1,4 @@
-import createKeyDict from './keyDict.js';
+import createKeyDict from './keyPressed.js';
 
 export class Key {
 	constructor() {
