@@ -16,6 +16,10 @@ export class Key {
 		});
 	}
 	
+	getPressed() {
+		return Object.values(this.keys);
+	}
+
 	getMods() {
 		const mods = [];
 
