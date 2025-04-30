@@ -111,10 +111,10 @@ control how held keys are repeated
 ❌ - key.get_repeat
 see how held keys are repeated
 
-🔳 - key.name
+✅ - key.name
 get the name of a key identifier
 
-🔳 - key.key_code
+✅ - key.key_code
 get the key identifier from a key name
 
 🔳/❌ - key.start_text_input
