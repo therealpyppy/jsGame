@@ -1,6 +1,5 @@
 import createKeyDict from './keyPressed.js';
 import { maps } from './keyMap.js'
-import { map } from 'event-stream';
 
 export class Key {
 	constructor() {
