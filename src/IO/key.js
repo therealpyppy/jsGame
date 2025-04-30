@@ -1,4 +1,5 @@
 import createKeyDict from './keyPressed.js';
+import { maps } from './keyMap.js'
 
 export class Key {
 	constructor() {
