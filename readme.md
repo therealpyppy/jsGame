@@ -99,16 +99,16 @@ true if the display is receiving keyboard input from the system
 ✅ - key.get_pressed
 get the state of all keyboard buttons
 
-🔳 - key.get_mods
+✅ - key.get_mods
 determine which modifier keys are being held
 
 🔳 - key.set_mods
 temporarily set which modifier keys are pressed
 
-🔳 - key.set_repeat
+❌ - key.set_repeat
 control how held keys are repeated
 
-🔳 - key.get_repeat
+❌ - key.get_repeat
 see how held keys are repeated
 
 🔳 - key.name
