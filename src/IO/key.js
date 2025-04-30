@@ -1,5 +1,6 @@
 import createKeyDict from './keyPressed.js';
 import { maps } from './keyMap.js'
+import { map } from 'event-stream';
 
 export class Key {
 	constructor() {
@@ -16,7 +17,15 @@ export class Key {
 		});
 	}
 	
-	getPressed() {
-		return this.keys;
+	static get_mods() {
+		const mods = [];
+
+		Object.keys(maps.ModKeyMap).forEach(mod => {
+			if (this.keys[mod] === true) {
+				mods.push(mod)
+			}
+		});
+	  
+		return mods;
 	}
-};
+}
