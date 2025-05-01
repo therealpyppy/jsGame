@@ -1,18 +1,17 @@
-import { eventList } from "./eventList.js"
+import { eventList } from './eventList.js';
+
+const list = new eventList();
+var visible = true;
 
 function addQueue(id) {
-
+	return (event) => {
+		list.push({ id, event });
+	};
 }
-
-eventList = new eventList();
-
-visible = true;
 
 window.addEventListener('mousemove', addQueue(1024));
 window.addEventListener('mousedown', addQueue(1025));
 window.addEventListener('mouseup', addQueue(1026));
-//window.addEventListener('click', addQueue(1027));
-//window.addEventListener('dblclick', addQueue(id));
 window.addEventListener('wheel', addQueue(1076));
 
 window.addEventListener('keydown', addQueue(798));
@@ -23,10 +22,11 @@ window.addEventListener('touchmove', addQueue(1794));
 window.addEventListener('touchend', addQueue(1793));
 
 window.addEventListener('beforeunload', addQueue(256));
-document.addEventListener('visibilitychange', (event) => {
-	visible = !visible
-	addQueue(visible ? 513 : 514);
+document.addEventListener('visibilitychange', () => {
+	visible = !visible;
+	list.push({ id: visible ? 513 : 514 });
 });
+
 window.addEventListener('blur', addQueue(1));
 window.addEventListener('focus', addQueue(1));
 
@@ -35,5 +35,7 @@ window.addEventListener('dragend', addQueue(4099));
 window.addEventListener('drop', addQueue(4096));
 
 export const event = {
-	
-};
+	get() {
+		return list.get();
+	}
+}; 
