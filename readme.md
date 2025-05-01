@@ -132,16 +132,16 @@ controls the position of the candidate list
 🔳/❌ - event.pump
 internally process pygame event handlers
 
-🔳 - event.get
+✅ - event.get
 get events from the queue
 
-🔳 - event.poll
+✅ - event.poll
 get a single event from the queue
 
-🔳 - event.wait
+🔳/❌ - event.wait
 wait for a single event from the queue
 
-🔳 - event.peek
+✅ - event.peek
 test if event types are waiting on the queue
 
 🔳 - event.clear
