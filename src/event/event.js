@@ -40,6 +40,15 @@ export const event = {
 	},
 
 	poll() {
-		return list.shift() || 0;
+		return list.queue.shift() || 0;
+	},
+
+	peek(type = null) {
+		if (type === null) {
+			return list.queue.length > 0;
+		}
+	
+		return list.queue[type] && true || false 
 	}
+	
 }; 
