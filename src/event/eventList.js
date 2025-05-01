@@ -62,6 +62,18 @@ export class eventList {
 			"AUDIODEVICEREMOVED": 4353,
 			"USEREVENT": 32866
 		};
+
+		this.queue = [];
+	}
+
+	push(event) {
+		this.queue.push(event);
+	}
+
+	get() {
+		const events = [...this.queue];
+		this.queue.length = 0;
+		return events;
 	}
 
 	getEventId(name) {
