@@ -37,5 +37,9 @@ window.addEventListener('drop', addQueue(4096));
 export const event = {
 	get() {
 		return list.get();
+	},
+
+	poll() {
+		return list.shift() || 0;
 	}
 }; 
