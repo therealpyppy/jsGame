@@ -154,4 +154,14 @@ export class event {
             this.blockedTypes.add(eventType);
         }
     }
+    
+    setAllowed(eventType = undefined) {
+        if (eventType === undefined || eventType === null) {
+            this.blockedTypes.clear();
+        } else if (Array.isArray(eventType)) {
+            eventType.forEach(type => this.blockedTypes.delete(type));
+        } else {
+            this.blockedTypes.delete(eventType);
+        }
+    }
 }
