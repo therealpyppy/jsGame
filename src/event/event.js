@@ -154,7 +154,7 @@ export class event {
             this.blockedTypes.add(eventType);
         }
     }
-    
+
     setAllowed(eventType = undefined) {
         if (eventType === undefined || eventType === null) {
             this.blockedTypes.clear();
@@ -163,5 +163,15 @@ export class event {
         } else {
             this.blockedTypes.delete(eventType);
         }
+    }
+
+    getBlocked(eventType) {
+        if (eventType === undefined || eventType === null) {
+            return false;
+        }
+        if (Array.isArray(eventType)) {
+            return eventType.some(type => this.blockedTypes.has(type));
+        }
+        return this.blockedTypes.has(eventType);
     }
 }
