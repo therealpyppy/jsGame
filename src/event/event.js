@@ -63,39 +63,43 @@ export class event {
 			"USEREVENT": 32866
 		};
         
-        window.addEventListener('mousemove', this.addQueue(1024));
-        window.addEventListener('mousedown', this.addQueue(1025));
-        window.addEventListener('mouseup', this.addQueue(1026));
-        window.addEventListener('wheel', this.addQueue(1076));
+        window.addEventListener('mousemove', this.push(1024));
+        window.addEventListener('mousedown', this.push(1025));
+        window.addEventListener('mouseup', this.push(1026));
+        window.addEventListener('wheel', this.push(1076));
 
-        window.addEventListener('keydown', this.addQueue(798));
-        window.addEventListener('keyup', this.addQueue(769));
+        window.addEventListener('keydown', this.push(798));
+        window.addEventListener('keyup', this.push(769));
 
-        window.addEventListener('touchstart', this.addQueue(1792));
-        window.addEventListener('touchmove', this.addQueue(1794));
-        window.addEventListener('touchend', this.addQueue(1793));
+        window.addEventListener('touchstart', this.push(1792));
+        window.addEventListener('touchmove', this.push(1794));
+        window.addEventListener('touchend', this.push(1793));
 
-        window.addEventListener('beforeunload', this.addQueue(256));
+        window.addEventListener('beforeunload', this.push(256));
         document.addEventListener('visibilitychange', () => {
             this.visible = !this.visible;
-            list.push({ id: this.visible ? 513 : 514 });
+            this.push({ id: this.visible ? 513 : 514 });
         });
 
-        window.addEventListener('blur', this.addQueue(1));
-        window.addEventListener('focus', this.addQueue(1));
+        window.addEventListener('blur', this.push(1));
+        window.addEventListener('focus', this.push(1));
 
-        window.addEventListener('dragstart', this.addQueue(4098));
-        window.addEventListener('dragend', this.addQueue(4099));
-        window.addEventListener('drop', this.addQueue(4096));
+        window.addEventListener('dragstart', this.push(4098));
+        window.addEventListener('dragend', this.push(4099));
+        window.addEventListener('drop', this.push(4096));
 
 		this.queue = [];
         this.waitCb = [];
         this.visible = true;
+        this.blockedTypes = new Set();
 
 	}
 
 	push(event) {
-		this.queue.push(event);
+		let eventId = event && typeof event === 'object' && 'id' in event ? event.id : event;
+		if (!this.blockedTypes.has(eventId)) {
+			this.queue.push(event);
+		}
 	}
 
 	getEventId(name) {
@@ -124,17 +128,20 @@ export class event {
 	    return this.queue.shift() || 0;
 	}
 
-	peek(type = null) {
-		if (type === null) {
+	peek(type = undefined) {
+		if (type === undefined) {
 			return this.queue.length > 0;
 		}
 	
 		return this.queue[type] && true || false 
 	}
 
-    addQueue(id) {
-        return (event) => {
-            list.push({ id, event });
-        };
+    clear(eventType = undefined) {
+        if (eventType === undefined) {
+            this.queue.length = 0;
+        } else {
+            const types = Array.isArray(eventType) ? eventType : [eventType];
+            this.queue = this.queue.filter(event => !types.includes(event));
+        }
     }
 }
