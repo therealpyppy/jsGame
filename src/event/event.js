@@ -128,12 +128,12 @@ export class event {
 	    return this.queue.shift() || 0;
 	}
 
-	peek(type = undefined) {
-		if (type === undefined) {
+	peek(eventType = undefined) {
+		if (eventType === undefined) {
 			return this.queue.length > 0;
 		}
 	
-		return this.queue[type] && true || false 
+		return this.queue[eventType] && true || false 
 	}
 
     clear(eventType = undefined) {
