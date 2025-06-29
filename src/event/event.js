@@ -144,4 +144,14 @@ export class event {
             this.queue = this.queue.filter(event => !types.includes(event));
         }
     }
+
+    setBlocked(eventType = undefined) {
+        if (eventType === undefined || eventType === null) {
+            Object.values(this.nameList).forEach(id => this.blockedTypes.add(id));
+        } else if (Array.isArray(eventType)) {
+            eventType.forEach(type => this.blockedTypes.add(type));
+        } else {
+            this.blockedTypes.add(eventType);
+        }
+    }
 }
