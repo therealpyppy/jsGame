@@ -98,12 +98,6 @@ export class event {
 		this.queue.push(event);
 	}
 
-	get() {
-		const events = [...this.queue];
-		this.queue.length = 0;
-		return events;
-	}
-
 	getEventId(name) {
 		if (Object.keys(this.nameList).includes(name)) {
 			return this.nameList[name];
@@ -120,20 +114,22 @@ export class event {
 		}
 	}
 
-    get() {
-		return list.get();
+	get() {
+		const events = [...this.queue];
+		this.queue.length = 0;
+		return events;
 	}
 
 	poll() {
-	    return list.queue.shift() || 0;
+	    return this.queue.shift() || 0;
 	}
 
 	peek(type = null) {
 		if (type === null) {
-			return list.queue.length > 0;
+			return this.queue.length > 0;
 		}
 	
-		return list.queue[type] && true || false 
+		return this.queue[type] && true || false 
 	}
 
     addQueue(id) {
