@@ -144,19 +144,19 @@ wait for a single event from the queue
 ✅ - event.peek
 test if event types are waiting on the queue
 
-🔳 - event.clear
+✅ - event.clear
 remove all events from the queue
 
-🔳 - event.event_name
+✅ - event.event_name
 get the string name from an event id
 
-🔳 - event.set_blocked
+✅ - event.set_blocked
 control which events are allowed on the queue
 
-🔳 - event.set_allowed
+✅ - event.set_allowed
 control which events are allowed on the queue
 
-🔳 - event.get_blocked
+✅ - event.get_blocked
 test if a type of event is blocked from the queue
 
 🔳 - event.set_grab
